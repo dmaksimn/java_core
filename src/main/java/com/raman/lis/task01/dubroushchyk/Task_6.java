@@ -1,4 +1,4 @@
-package Task01;
+package com.raman.lis.task01.dubroushchyk;
 
 public class Task_6 {
 
