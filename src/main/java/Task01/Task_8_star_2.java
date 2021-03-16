@@ -1,4 +1,4 @@
-package com.nikolay_dubroushchyk.Task01;
+package Task01;
 
 public class Task_8_star_2 {
 //
@@ -9,7 +9,7 @@ public class Task_8_star_2 {
 
     public static void main(String[] args) {
 
-        int[] array = {5, 0, 0};
+        int[] array = {3, 2, 1, 3, 2, 1};
         // 1, 2, 1, 2, 1, 2, 3, 1, 2, 4, 3, 2, 1, 3, 2, 1, 1, 2, 1, 1, 2, 1,
 
         int sum = 1;
