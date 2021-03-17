@@ -3,28 +3,19 @@ package com.raman.lis.task01.bodrova;
 public class Task_6 {
 
     public static void main(String[] args) {
+        int n = 2;
+        int[][] array1 = {{2, 2}, {2, 2}};
+        int[][] array2 = {{1, 1}, {1, 1}};
+        int sumArray[][] = new int[n][n];
+        int subArray[][] = new int[n][n];
 
-        int[][] array1 = {{1, 1}, {1, 1}};
-        int[][] array2 = {{2, 2}, {2, 2}};
-        int sum1 = 0;
-        int sum2 = 0;
-        int sum;
-        int sub;
-
-        for (int i = 0; i < array1.length; i++) {
-            for (int j = 0; j < array1.length; j++) {
-                sum1 = sum1 + array1[i][j];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                sumArray[i][j] = array1[i][j] + array2[i][j];
+                subArray[i][j] = array1[i][j] - array2[i][j];
             }
         }
 
-        for (int i = 0; i < array2.length; i++) {
-            for (int j = 0; j < array2.length; j++) {
-                sum2 = sum2 + array2[i][j];
-            }
-        }
-        sum = sum1 + sum2;
-        sub = sum1 - sum2;
-        System.out.println("Сумма элементов двух матриц равна " + sum);
-        System.out.println("Разность элементов двух матриц равна  " + sub);
     }
+
 }
