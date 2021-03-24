@@ -1,4 +1,6 @@
-public class Task2 {
+package com.raman.lis.task01.darashenka;
+
+public class Task_2 {
     public static void main(String... args) {
         int array[] = {0, 1, 1, 2, 3, 5, 8, 13, 21};
         int n = array[6];

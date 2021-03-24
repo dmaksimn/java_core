@@ -1,4 +1,4 @@
-package com.raman.lis.task01.alexander.grigorovich;
+package com.raman.lis.task01.grigorovich;
 
 public class Task4 {
     /*
