@@ -1,4 +1,6 @@
-public class Task6 {
+package com.raman.lis.task01.darashenka;
+
+public class Task_6 {
     public static void main(String... args) {
         int matrix[][] = {{5, 4, 3, 6}, {8, 3, 1, 0}};
         int matrix2[][] = {{5, 4, 3, 6}, {8, 3, 1, 0}};

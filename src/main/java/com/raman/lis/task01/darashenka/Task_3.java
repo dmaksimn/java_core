@@ -1,4 +1,6 @@
-public class Task3 {
+package com.raman.lis.task01.darashenka;
+
+public class Task_3 {
     public static void main(String... args) {
         int array[] = {2, 5, 7, 4, 6, 8, 9, 1};
         int ReverseArray[] = new int[array.length];

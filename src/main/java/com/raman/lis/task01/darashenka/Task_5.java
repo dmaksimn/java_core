@@ -1,4 +1,6 @@
-public class Task5 {
+package com.raman.lis.task01.darashenka;
+
+public class Task_5 {
     public static void main (String... args) {
         int array[][] = {{25, 34, 43, 65,}, {98, 52, 62, 12}};
         int diagCounter = 0;
