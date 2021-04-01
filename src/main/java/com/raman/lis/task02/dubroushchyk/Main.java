@@ -16,6 +16,12 @@ public class Main {
         factory.storageInfo();
         car2.Info();
         salon.changeServiceColor(car2, "BLUE");
+        System.out.println("");
         car2.Info();
+        Car car3 = salon.createCarOnCarFactory(CarColor.BLUE, CarModel.BMW, 2020,
+                CarSizeWheels.Low, CarEngineVolume.MIDDLE_VOLUME);
+        System.out.println("");
+        car3.Info();
+        factory.storageInfo();
     }
 }

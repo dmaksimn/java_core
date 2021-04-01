@@ -62,12 +62,11 @@ public class CarFactory {
 
     Car createCar(String color, String model, int yearProduction,
                   int sizeWheels, int engineVolume) {
-        Car car = new Car(color, model, yearProduction,
-                sizeWheels, engineVolume);
 
         for (int i = 0; i < storage.length; i++) {
-            if (car.equals(storage[i])) {
-                car = storage[i];
+            if (storage[i].compareCarInStorage(color, model, yearProduction,
+                                                sizeWheels, engineVolume)) {
+                Car car = storage[i];
                 for (int j = i; j < storage.length - 1; j++) {
                     storage[i] = storage[i + 1];
                 }
@@ -76,7 +75,8 @@ public class CarFactory {
                 return car;
             }
         }
-        return car;
+        return new Car(color, model, yearProduction,
+                sizeWheels, engineVolume);
     }
 
     Car getCarFromStorage(int number) {

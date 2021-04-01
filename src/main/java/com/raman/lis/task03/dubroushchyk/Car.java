@@ -1,19 +1,19 @@
-package com.raman.lis.task02.dubroushchyk;
+package com.raman.lis.task03.dubroushchyk;
 
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Car {
+public abstract class Car {
 
     private String color;
     private final String model;
     private final int yearProduction;
     private int sizeWheels;
     private final int engineVolume;
-    private String[] optional = new String[0];
+    private List<String> optional = new ArrayList<>();
 
-    Car(String color, String model, int yearProduction, int sizeWheels, int engineVolume) {
+    protected Car(String color, String model, int yearProduction, int sizeWheels, int engineVolume) {
         this.color = color;
         this.model = model;
         this.yearProduction = yearProduction;
@@ -21,22 +21,12 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    void addOptional(String string) {
-        String[] array = Arrays.copyOf(optional, optional.length + 1);
-        optional = array;
-        optional[optional.length - 1] = string;
+    protected void addOptional(String string) {
+        optional.add(string);
     }
 
-    void removeOptional(String string) {
-        for (int i = 0; i < optional.length; i++) {
-            if (optional[i].equalsIgnoreCase(string)) {
-                for (int j = i; j < optional.length - 1; j++) {
-                    optional[i] = optional[i + 1];
-                }
-                String[] array = Arrays.copyOf(optional, optional.length - 1);
-                optional = array;
-            }
-        }
+    protected void removeOptional(String string) {
+        optional.remove(string);
     }
 
     void Info() {
@@ -45,25 +35,25 @@ public class Car {
         System.out.println("Год выпуска авто: " + yearProduction);
         System.out.println("Размер колёс авто: " + sizeWheels);
         System.out.println("Объём двигателя авто: " + engineVolume);
-        if (optional.length >= 1) {
-            System.out.println("Список опций: " + Arrays.toString(optional));
+        if (optional.size() >= 1) {
+            System.out.println("Список опций: " + optional);
         } else {
             System.out.println("Список опций: нет дополнительных опций");
         }
     }
 
-    boolean compareCarInStorage(String color, String model, int yearProduction,
+    public boolean compareCarInStorage(String color, String model, int yearProduction,
                                 int sizeWheels, int engineVolume) {
         return this.yearProduction == yearProduction && this.sizeWheels == sizeWheels
                 && this.engineVolume == engineVolume && Objects.equals(this.color, color)
-                && Objects.equals(this.model, model) && Arrays.equals(this.optional, optional);
+                && Objects.equals(this.model, model);
     }
 
-    void setColor(String color) {
+    protected void setColor(String color) {
         this.color = color;
     }
 
-    void setSizeWheels(int sizeWheels) {
+    protected void setSizeWheels(int sizeWheels) {
         this.sizeWheels = sizeWheels;
     }
 
@@ -83,7 +73,8 @@ public class Car {
         Car car = (Car) o;
         return yearProduction == car.yearProduction && sizeWheels == car.sizeWheels
                 && engineVolume == car.engineVolume && Objects.equals(color, car.color)
-                && Objects.equals(model, car.model) && Arrays.equals(optional, car.optional);
+                && Objects.equals(model, car.model) && Objects.equals(optional, car.optional);
     }
+
 }
 
