@@ -1,20 +1,19 @@
 package com.raman.lis.task03.popov.factory;
 
-import com.raman.lis.task03.popov.cars.Car;
 import com.raman.lis.task03.popov.cars.CarAudi;
 
 import java.util.LinkedList;
 
-public class AutoFactoryAudi extends AutoFactory implements Print{
+public class AutoFactoryAudi extends AutoFactory implements Print {
 
-    public Car createCar(String colour, int sizeWheels, int volumeEngine,
-                         String typeCar, String date) {
-        return new CarAudi(colour,sizeWheels, volumeEngine,date,typeCar);
+    public CarAudi createCar(String colour, int sizeWheels, int volumeEngine,
+                             String date, String typeCar) {
+        return new CarAudi(colour, sizeWheels, volumeEngine, date, typeCar);
     }
 
-    public Car createCar(String colour, int sizeWheels, int volumeEngine, String option,
-                         String typeCar, String date) {
-        return new CarAudi(colour,sizeWheels, volumeEngine,date,typeCar,option);
+    public CarAudi createCar(String colour, int sizeWheels, int volumeEngine,
+                             String option, String date, String typeCar) {
+        return new CarAudi(colour, sizeWheels, volumeEngine, option, date, typeCar);
     }
 
     public void printList(String nameList) {

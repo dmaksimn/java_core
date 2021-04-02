@@ -1,29 +1,44 @@
 package com.raman.lis.task03.popov;
 
-import com.raman.lis.task03.popov.cars.Car;
+import com.raman.lis.task03.popov.cars.CarAudi;
+import com.raman.lis.task03.popov.cars.CarBMV;
+import com.raman.lis.task03.popov.cars.CarFerrari;
 import com.raman.lis.task03.popov.factory.AutoFactoryAudi;
 import com.raman.lis.task03.popov.factory.AutoFactoryBMV;
+import com.raman.lis.task03.popov.factory.AutoFactoryFerrari;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class CarSalon{
+public class CarSalon {
     AutoFactoryBMV autofactoryBMV = new AutoFactoryBMV();
     AutoFactoryAudi autoFactoryAudi = new AutoFactoryAudi();
-    Car car;
+    AutoFactoryFerrari autoFactoryFerrari = new AutoFactoryFerrari();
 
-    Car createCar(String colour,String model, int sizeWheels, int volumeEngine, String option, String date){
-        return autofactoryBMV.createCar(colour,sizeWheels,volumeEngine,option,date);
+
+    CarBMV createCarBMV(String colour, int sizeWheels, int volumeEngine,
+                        String option, String date) {
+        return autofactoryBMV.createCar(colour, sizeWheels, volumeEngine, option, date);
     }
 
-    Car createCar(String colour,String model, int sizeWheels, int volumeEngine, String date) {
+    CarBMV createCarBMV(String colour, int sizeWheels, int volumeEngine, String date) {
         return autofactoryBMV.createCar(colour, sizeWheels, volumeEngine, date);
     }
 
-    Car createCar(String colour, int sizeWheels, int volumeEngine,
-                  String typeCar, String date){
-        return autoFactoryAudi.createCar(colour,sizeWheels,volumeEngine,typeCar,date);
+    CarAudi createCarAudi(String colour, int sizeWheels, int volumeEngine,
+                          String date, String typeCar) {
+        return autoFactoryAudi.createCar(colour, sizeWheels, volumeEngine, date, typeCar);
+    }
+
+    CarAudi createCarAudi(String colour, int sizeWheels, int volumeEngine,
+                          String option, String date, String typeCar) {
+        return autoFactoryAudi.createCar(colour, sizeWheels, volumeEngine, option, date, typeCar);
+    }
+
+    CarFerrari createCarFerrari(String colour, int sizeWheels, int volumeEngine,
+                                String option, String date) {
+        return autoFactoryFerrari.createCar(colour, sizeWheels, volumeEngine, option, date);
+    }
+
+    CarFerrari createCarFerrari(String colour, int sizeWheels, int volumeEngine, String date) {
+        return autoFactoryFerrari.createCar(colour, sizeWheels, volumeEngine, date);
     }
 
 }

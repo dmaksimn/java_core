@@ -1,18 +1,17 @@
 package com.raman.lis.task03.popov.factory;
 
-import com.raman.lis.task03.popov.cars.Car;
 import com.raman.lis.task03.popov.cars.CarBMV;
 
 import java.util.LinkedList;
 
 public class AutoFactoryBMV extends AutoFactory implements Print {
 
-    public Car createCar(String colour, int sizeWheels,
-                         int volumeEngine, String option, String date) {
+    public CarBMV createCar(String colour, int sizeWheels,
+                            int volumeEngine, String option, String date) {
         return new CarBMV(colour, sizeWheels, volumeEngine, option, date);
     }
 
-    public Car createCar(String colour, int sizeWheels, int volumeEngine, String date) {
+    public CarBMV createCar(String colour, int sizeWheels, int volumeEngine, String date) {
         return new CarBMV(colour, sizeWheels, volumeEngine, date);
     }
 

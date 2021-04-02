@@ -1,7 +1,7 @@
 package com.raman.lis.task03.popov.cars;
 
-import com.raman.lis.task03.popov.service.ServiceCustomizationOption;
 import com.raman.lis.task03.popov.factory.AutoFactoryBMV;
+import com.raman.lis.task03.popov.service.ServiceCustomizationOption;
 
 import java.util.LinkedList;
 
@@ -27,7 +27,7 @@ public abstract class Car implements Cars {
         this.volumeEngine = findElement(autoFactoryBMV.getListVolumeEngine(), volumeEngine);
         this.colour = findElement(autoFactoryBMV.getListColour(), colour);
         this.sizeWheels = findElement(autoFactoryBMV.getListSizeWheels(), sizeWheels);
-        this.date = findElement(autoFactoryBMV.getListDate(), date);
+        this.date = date;
     }
 
     public String findElement(LinkedList<String> list, String element) {
@@ -37,7 +37,7 @@ public abstract class Car implements Cars {
             if (element.equals(anyElement)) {
                 element1 = anyElement;
                 i = 1;
-            } else if(i == 0){
+            } else if (i == 0) {
                 element1 = "Такого нет в продаже!";
             }
         }
@@ -51,8 +51,8 @@ public abstract class Car implements Cars {
             if (element == (anyElement)) {
                 a = element;
                 i = 1;
-            } else if(i==0) {
-               a = 0;
+            } else if (i == 0) {
+                a = 0;
             }
         }
         return a;
