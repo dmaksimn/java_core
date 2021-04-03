@@ -16,7 +16,7 @@ public class AutoFactoryBMV extends AutoFactory implements Print {
     }
 
     public void printList(String nameList) {
-        String[] str = {"volumeengine", "colour", "sizewheels", "typecar"};
+        String[] str = {"volumeengine", "colour", "sizewheels"};
         if (nameList.toLowerCase().replaceAll(" ", "").equals(str[0])) {
             System.out.println("List of Volume Engine: ");
             printList(getListVolumeEngine());

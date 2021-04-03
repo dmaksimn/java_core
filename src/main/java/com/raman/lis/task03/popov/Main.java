@@ -4,6 +4,7 @@ import com.raman.lis.task03.popov.cars.Car;
 import com.raman.lis.task03.popov.cars.CarAudi;
 import com.raman.lis.task03.popov.cars.CarFerrari;
 import com.raman.lis.task03.popov.cars.Cars;
+import com.raman.lis.task03.popov.carsalon.CarSalon;
 import com.raman.lis.task03.popov.factory.AutoFactoryAudi;
 import com.raman.lis.task03.popov.factory.AutoFactoryBMV;
 import com.raman.lis.task03.popov.service.ServiceCustomizationColor;
@@ -28,13 +29,15 @@ public class Main {
         carAudi.printCharacteristicCar(carAudi);
         System.out.println();
 
-        Cars carFerrari = new CarFerrari("Yellow",13,5700,
+        Cars carFerrari = carSalon.createCarFerrari("Yellow",13,5700,
                 "Conditioner","10/03/2021");
         carFerrari.printCharacteristicCar((Car)carFerrari);
         serviceCustomizationColor.changeColor((Car) carFerrari,"Black");
         serviceCustomizationOption.addOption((Car) carFerrari,"LCD - display");
         System.out.println();
         carFerrari.printCharacteristicCar((Car) carFerrari);
+
+
 
 
     }

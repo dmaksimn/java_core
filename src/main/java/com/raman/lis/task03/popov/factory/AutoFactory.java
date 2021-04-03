@@ -45,6 +45,20 @@ public abstract class AutoFactory implements Print {
         return storage;
     }
 
+    public String addStorge(Car car){
+        storage.add(car);
+        return "На склад добавлена машина";
+    }
+
+    public String removeCarOfStorage(Car car){
+        if(storage.getFirst().equals("null")){
+            return "Склад пуст";
+        }else {
+            storage.remove(car);
+        }
+        return "Со склада продана одна машина";
+    }
+
     public void addVolumeEngine(int volumeEngine) {
         listVolumeEngine.add(volumeEngine);
     }
