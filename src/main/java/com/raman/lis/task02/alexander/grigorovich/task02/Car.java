@@ -10,7 +10,7 @@ public class Car {
     private int productionYear;
     private int diameterWheel;
     private double volumeEngine;
-    private String[] additionalOptions = new String[0];
+    private String[] additionalOptions;
 
     public Car() {
 
@@ -27,7 +27,7 @@ public class Car {
     }
 
     public Car(String color, String model,int productionYear, int diameterWheel,
-               double volumeEngine, String[] additionalOptions) {
+               double volumeEngine, String... additionalOptions) {
         this.color = color;
         this.model = model;
         this.productionYear = productionYear;
@@ -119,7 +119,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return productionYear == car.productionYear && diameterWheel == car.diameterWheel && Double.compare(car.volumeEngine, volumeEngine) == 0 && Objects.equals(color, car.color) && Objects.equals(model, car.model) && Arrays.equals(additionalOptions, car.additionalOptions);
+        return productionYear == car.productionYear
+                && diameterWheel == car.diameterWheel
+                && Double.compare(car.volumeEngine, volumeEngine) == 0
+                && Objects.equals(color, car.color)
+                && Objects.equals(model, car.model)
+                && Arrays.equals(additionalOptions, car.additionalOptions);
     }
 
 }

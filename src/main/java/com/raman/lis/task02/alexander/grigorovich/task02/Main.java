@@ -7,7 +7,7 @@ public class Main {
         AutoShowRoom autoShowRoom = new AutoShowRoom();
 
 
-        Car car0 = new Car("Pink", "Mersedes", 1999, 17, 4.4, new String[]{"Towbar"});
+        Car car0 = new Car("Pink", "Mersedes", 1999, 17, 4.4, "Towbar", "another");
         car0.printInfoAboutCar();
         car0.setColor("Grey");
         car0.setDiameterWheel(21);

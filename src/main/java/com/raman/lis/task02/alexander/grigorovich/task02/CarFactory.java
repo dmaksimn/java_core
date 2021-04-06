@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class CarFactory {
 
+    private static final Car CAR = new Car();
     private int PRODUCTION_YEAR = 2021;
     Car[] carsInWareHouse = new Car[2];
 
@@ -44,6 +45,7 @@ public class CarFactory {
     Car createNewCar(String color, String model, int productionYear, int diameterWheel,
                      double volumeEngine) {
         Car newCar = new Car(color, model, PRODUCTION_YEAR, diameterWheel, volumeEngine);
+
 
         for (int i = 0; i < carsInWareHouse.length; i++) {
             if (newCar.equals(carsInWareHouse[i])) {
