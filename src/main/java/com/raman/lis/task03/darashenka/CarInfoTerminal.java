@@ -1,4 +1,4 @@
-package com.TaskCar;
+package com.raman.lis.task03.darashenka;
 
 public class CarInfoTerminal {
 		public static void main (String... args) {
