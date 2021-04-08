@@ -1,9 +1,10 @@
 package com.raman.lis.task03.dubroushchyk;
 
+import com.raman.lis.task03.dubroushchyk.Enum.EServiceColor;
 
 public class ServiceColor extends CarService {
 
-    public void changeCarColorInCar(Car car, String color) {
-        car.setColor(color);
+    public void changeCarColorInCar(Car car, EServiceColor color) {
+        car.setColor(color.getColor());
     }
 }

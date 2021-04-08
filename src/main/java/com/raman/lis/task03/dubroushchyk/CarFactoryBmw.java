@@ -1,69 +1,55 @@
 package com.raman.lis.task03.dubroushchyk;
 
+//звёздочка потому-что мне все Enum константы из этих package надо
 import com.raman.lis.task03.dubroushchyk.Enum.Bmw.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class CarFactoryBmw extends CarFactory {
 
-    List<Car> carStorageBmw = new ArrayList<>();
+    private int currentYear = 2021;
+    private int minYearForCreateCar = currentYear -10;
 
-    public CarFactoryBmw(ServiceColor serviceColor, ServiceWheels serviceWheels, ServiceOptional serviceOptional) {
+    public CarFactoryBmw(ServiceColor serviceColor, ServiceWheels serviceWheels,
+                         ServiceOptional serviceOptional) {
         super(serviceColor, serviceWheels, serviceOptional);
 
-        carStorageBmw.add(new CarBmw("RED","BMW M4", 2020,
-                17, 2000));
-        carStorageBmw.add(new CarBmw("YELLOW","BMW M5", 2005,
-                18, 2200));
-        carStorageBmw.add(new CarBmw("BLACK","BMW X6", 2009,
-                20, 3500));
+        addCarInStorage(new CarBmw(CarColorBmw.RED,CarModelBmw.M4, 2020,
+                CarSizeWheelsBmw.Low, CarEngineVolumeBmw.LOW_VOLUME));
+        addCarInStorage(new CarBmw(CarColorBmw.YELLOW,CarModelBmw.M5, 2005,
+                CarSizeWheelsBmw.MIDDLE, CarEngineVolumeBmw.MIDDLE_VOLUME));
+        addCarInStorage(new CarBmw(CarColorBmw.BLACK,CarModelBmw.X6, 2009,
+                CarSizeWheelsBmw.HIGH, CarEngineVolumeBmw.HIGH_VOLUME));
     }
 
-    @Override
-    public void storageInfo() {
-        System.out.println("\nАвто на складе завода BMW");
-        if (carStorageBmw.size() >= 1) {
-            System.out.println(carStorageBmw);
+    public Car createCar(CarColorBmw color, CarModelBmw model, int yearProduction,
+                         CarSizeWheelsBmw sizeWheels, CarEngineVolumeBmw engineVolume)
+                         throws IllegalArgumentException {
+        if (yearProduction > currentYear || yearProduction < minYearForCreateCar) {
+            throw new IllegalArgumentException("Illegal value yearProduction for carFactoryBMW in" +
+                    " class CarFactoryBmw");
+        }
+        Car car = compareCarInStorage(color, model, yearProduction, sizeWheels, engineVolume);
+        if (car != null) {
+            return car;
         } else {
-            System.out.println("Склад пустой");
+            return new CarBmw(color, model, yearProduction, sizeWheels, engineVolume);
         }
-    }
-
-    public Car createCar(String color, String model, int yearProduction,
-                         int sizeWheels, int engineVolume) {
-        for (int i = 0; i < carStorageBmw.size(); i++) {
-            if (carStorageBmw.get(i).compareCarInStorage(color, model, yearProduction,
-                    sizeWheels, engineVolume)) {
-                Car car = carStorageBmw.get(i);
-                carStorageBmw.remove(i);
-                return car;
-            }
-        }
-        return new CarBmw(color, model, yearProduction,
-                sizeWheels, engineVolume);
     }
 
     @Override
-    public Car getCarFromStorage(int number) {
-        if (number > carStorageBmw.size() || number <= 0) {
-            System.out.println("Нет авто под таким номеров или склад пустой");
-            return null;
-        }
-        Car car = carStorageBmw.get(number - 1);
-        carStorageBmw.remove(number - 1);
-        return car;
+    protected void stringAutoOnStorageFactory() {
+        System.out.println("Авто на складе завода BMW");
     }
 
     @Override
     public void printPropertyCar() {
-        System.out.println("\nВывод на экран enum");
-        System.out.println("Возможный цвет авто: " + Arrays.toString(CarColorBmw.values()));
-        System.out.println("Возможный объём двигателя: " + Arrays.toString(CarEngineVolumeBmw.values()));
-        System.out.println("Возможная модель авто: " + Arrays.toString(CarModelBmw.values()));
-        System.out.println("Возможный размер дисков: " + Arrays.toString(CarSizeWheelsBmw.values()));
+        StringBuilder builder = new StringBuilder();
+        builder.append("Вывод списка возможных свойст авто завода BMW" + "\n");
+        builder.append("Возможный цвет авто: " + Arrays.toString(CarColorBmw.values()) + "\n");
+        builder.append("Возможный объём двигателя: " + Arrays.toString(CarEngineVolumeBmw.values()) + "\n");
+        builder.append("Возможная модель авто: " + Arrays.toString(CarModelBmw.values()) + "\n");
+        builder.append("Возможный размер дисков: " + Arrays.toString(CarSizeWheelsBmw.values()) + "\n");
+        System.out.println(builder);
     }
-
 }
 

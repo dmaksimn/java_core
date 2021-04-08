@@ -1,6 +1,8 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Audi;
 
-public enum CarSizeWheelsAudi {
+import com.raman.lis.task03.dubroushchyk.ICarSizeWheels;
+
+public enum CarSizeWheelsAudi implements ICarSizeWheels {
     Low(17),
     MIDDLE(19),
     HIGH(20);
@@ -11,6 +13,7 @@ public enum CarSizeWheelsAudi {
         this.sizeWheels = value;
     }
 
+    @Override
     public int getSizeWheels() {
         return sizeWheels;
     }

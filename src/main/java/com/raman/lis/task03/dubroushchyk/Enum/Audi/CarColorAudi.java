@@ -1,6 +1,9 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Audi;
 
-public enum CarColorAudi {
+import com.raman.lis.task03.dubroushchyk.ICarColor;
+
+public enum CarColorAudi implements ICarColor {
+
     WHITE("WHITE"),
     PINK("PINK"),
     BLACK("BLACK");
@@ -11,6 +14,7 @@ public enum CarColorAudi {
         this.string = string;
     }
 
+    @Override
     public String getColor() {
         return string;
     }

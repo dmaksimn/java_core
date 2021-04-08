@@ -1,6 +1,8 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Bmw;
 
-public enum CarColorBmw {
+import com.raman.lis.task03.dubroushchyk.ICarColor;
+
+public enum CarColorBmw implements ICarColor {
     YELLOW("YELLOW"),
     RED("RED"),
     BLACK("BLACK");
@@ -11,6 +13,7 @@ public enum CarColorBmw {
         this.string = string;
     }
 
+    @Override
     public String getColor() {
         return string;
     }

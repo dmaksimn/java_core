@@ -1,20 +1,21 @@
 package com.raman.lis.task03.dubroushchyk;
 
-import java.util.List;
+import com.raman.lis.task03.dubroushchyk.Enum.CarOptions;
+import com.raman.lis.task03.dubroushchyk.Enum.EServiceColor;
 
 public interface ICarFactory {
 
-    void changeServiceColor(Car car, String color);
+    void changeServiceColor(Car car, EServiceColor color);
 
     void changeServiceWheels(Car car, int wheels);
 
-    void addServiceOptional(Car car, String string);
+    void addServiceOptional(Car car, CarOptions options);
 
-    void removeServiceOptional(Car car, String string);
+    void removeServiceOptional(Car car, CarOptions options);
 
     void storageInfo();
 
-    Car getCarFromStorage(int number);
+    Car getCarFromStorageNumberAuto(int number);
 
     void printPropertyCar ();
 }

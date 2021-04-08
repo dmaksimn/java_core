@@ -1,6 +1,8 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Mercedes;
 
-public enum CarColorMercedes {
+import com.raman.lis.task03.dubroushchyk.ICarColor;
+
+public enum CarColorMercedes implements ICarColor {
     BLACK("BLACK"),
     GREY("GREY"),
     ORANGE("ORANGE");
@@ -11,6 +13,7 @@ public enum CarColorMercedes {
         this.string = string;
     }
 
+    @Override
     public String getColor() {
         return string;
     }

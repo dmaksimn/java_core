@@ -1,6 +1,8 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Mercedes;
 
-public enum CarEngineVolumeMercedes {
+import com.raman.lis.task03.dubroushchyk.ICarEngine;
+
+public enum CarEngineVolumeMercedes implements ICarEngine {
     LOW_VOLUME(2000),
     MIDDLE_VOLUME(3000),
     HIGH_VOLUME(4000);
@@ -11,6 +13,7 @@ public enum CarEngineVolumeMercedes {
         this.volume = value;
     }
 
+    @Override
     public int getVolume() {
         return volume;
     }

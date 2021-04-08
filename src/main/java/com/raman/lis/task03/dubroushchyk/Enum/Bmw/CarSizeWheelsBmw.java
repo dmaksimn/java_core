@@ -1,6 +1,8 @@
 package com.raman.lis.task03.dubroushchyk.Enum.Bmw;
 
-public enum CarSizeWheelsBmw {
+import com.raman.lis.task03.dubroushchyk.ICarSizeWheels;
+
+public enum CarSizeWheelsBmw implements ICarSizeWheels {
     Low(17),
     MIDDLE(18),
     HIGH(20);
@@ -11,6 +13,7 @@ public enum CarSizeWheelsBmw {
         this.sizeWheels = value;
     }
 
+    @Override
     public int getSizeWheels() {
         return sizeWheels;
     }

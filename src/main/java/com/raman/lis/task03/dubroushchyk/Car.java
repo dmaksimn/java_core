@@ -21,6 +21,32 @@ public abstract class Car {
         this.engineVolume = engineVolume;
     }
 
+    void info() {
+                StringBuilder builder = new StringBuilder();
+                builder.append("Цвет авто: " + color + "\n");
+                builder.append("Марка авто: " + model + "\n");
+                builder.append("Год выпуска авто: " + yearProduction + "\n");
+                builder.append("Размер колёс авто: " + sizeWheels + "\n");
+                builder.append("Объём двигателя авто: " + engineVolume + "\n");
+                if (optional.size() >= 1) {
+                    builder.append("Список опций: " + optional + "\n");
+                } else {
+                    builder.append("Список опций: нет дополнительных опций" + "\n");
+                }
+                System.out.println(builder);
+    }
+
+    public boolean compareCar(String color, String model, int yearProduction,
+                                       int sizeWheels, int engineVolume) {
+            return this.yearProduction == yearProduction && this.sizeWheels == sizeWheels
+                    && this.engineVolume == engineVolume && Objects.equals(this.color, color)
+                    && Objects.equals(this.model, model);
+    }
+
+    protected void setSizeWheels(int sizeWheels) {
+        this.sizeWheels = sizeWheels;
+    }
+
     protected void addOptional(String string) {
         optional.add(string);
     }
@@ -29,32 +55,8 @@ public abstract class Car {
         optional.remove(string);
     }
 
-    void Info() {
-        System.out.println("Цвет авто: " + color);
-        System.out.println("Марка авто: " + model);
-        System.out.println("Год выпуска авто: " + yearProduction);
-        System.out.println("Размер колёс авто: " + sizeWheels);
-        System.out.println("Объём двигателя авто: " + engineVolume);
-        if (optional.size() >= 1) {
-            System.out.println("Список опций: " + optional);
-        } else {
-            System.out.println("Список опций: нет дополнительных опций");
-        }
-    }
-
-    public boolean compareCarInStorage(String color, String model, int yearProduction,
-                                int sizeWheels, int engineVolume) {
-        return this.yearProduction == yearProduction && this.sizeWheels == sizeWheels
-                && this.engineVolume == engineVolume && Objects.equals(this.color, color)
-                && Objects.equals(this.model, model);
-    }
-
-    protected void setColor(String color) {
+    protected void setColor (String color) {
         this.color = color;
-    }
-
-    protected void setSizeWheels(int sizeWheels) {
-        this.sizeWheels = sizeWheels;
     }
 
     @Override
@@ -75,6 +77,5 @@ public abstract class Car {
                 && engineVolume == car.engineVolume && Objects.equals(color, car.color)
                 && Objects.equals(model, car.model) && Objects.equals(optional, car.optional);
     }
-
 }
 
