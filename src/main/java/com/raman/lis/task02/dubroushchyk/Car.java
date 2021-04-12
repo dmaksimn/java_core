@@ -52,6 +52,13 @@ public class Car {
         }
     }
 
+    boolean compareCarInStorage(String color, String model, int yearProduction,
+                                int sizeWheels, int engineVolume) {
+        return this.yearProduction == yearProduction && this.sizeWheels == sizeWheels
+                && this.engineVolume == engineVolume && Objects.equals(this.color, color)
+                && Objects.equals(this.model, model) && Arrays.equals(this.optional, optional);
+    }
+
     void setColor(String color) {
         this.color = color;
     }
