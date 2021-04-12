@@ -2,7 +2,7 @@ package com.raman.lis.task03.bedareva;
 
 public interface OptionChangable {
 
-    public void addOptionToList(Car car, String newOption);
+    boolean addOptionToList(Car car, Option newOption);
 
-    public void deleteOptionFromList(Car car, String option);
+    boolean deleteOptionFromList(Car car, Option option);
 }

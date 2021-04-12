@@ -4,7 +4,7 @@ public abstract class Car {
 
     private String model;
     private int yearOfIssue;
-    private double engineVolume;
+    private double engineValue;
     private String color;
     private int wheelSize;
     private String options;
@@ -26,11 +26,11 @@ public abstract class Car {
     }
 
     public double getEngineVolume() {
-        return engineVolume;
+        return engineValue;
     }
 
-    public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
+    public void setEngineValue(double engineValue) {
+        this.engineValue = engineValue;
     }
 
     public String getColor() {
@@ -57,21 +57,19 @@ public abstract class Car {
         this.options = options;
     }
 
-    Car() {
-    }
-
     @Override
-    public String toString(){
-        return "Модель: " + model + "\n" + "Год выпуска: " + getYearOfIssue()
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Модель: " + model + "\n" + "Год выпуска: " + getYearOfIssue()
                 + "\n" + "Объем двигателя: " + getEngineVolume() + "\n" + "Размер колес: " + getWheelSize()
-                + "\n" + "Цвет: " + getColor() + "\n" + "Опции: " + getOptions() + "\n";
+                + "\n" + "Цвет: " + getColor() + "\n" + "Опции: " + getOptions() + "\n");
+        return sb.toString();
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return model.equals(car.model) && yearOfIssue == car.yearOfIssue && engineVolume == car.engineVolume;
+        return model.equals(car.model) && yearOfIssue == car.yearOfIssue && engineValue == car.engineValue;
     }
 }
