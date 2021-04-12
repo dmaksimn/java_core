@@ -1,13 +1,18 @@
 package com.raman.lis.task03.bogdanovich;
 
+import java.util.ArrayList;
+
 public class StockCar {
-    static int count = 0;
-    static allCar[] cars = new allCar[30];
+    static ArrayList <AllCar> cars = new ArrayList<>();
 
     //Вывод всех авто на складе
     static void printCarAll () {
-        for (int i = 0; i < count; i++) {
-            cars[i].printCar();
+        System.out.println(cars.toString());
+    }
+
+    static void  printCarAll2 () {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.print(cars.get(i));
         }
     }
 }

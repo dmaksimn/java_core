@@ -1,12 +1,12 @@
 package com.raman.lis.task03.shafalovich;
 
 public enum CarWheels {
-    SIZE_21 (21),
-    SIZE_20 (20),
-    SIZE_19 (19),
-    SIZE_18 (18),
-    SIZE_17 (17),
-    SIZE_16 (16);
+    SIZE_21(21),
+    SIZE_20(20),
+    SIZE_19(19),
+    SIZE_18(18),
+    SIZE_17(17),
+    SIZE_16(16);
 
     private int size;
 

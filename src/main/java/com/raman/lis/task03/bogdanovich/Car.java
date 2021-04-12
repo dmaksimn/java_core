@@ -21,8 +21,8 @@ abstract class Car {
                           float engineVol);
 }
 
-class allCar extends Car {
-    allCar (String color, String model, int year, int wheelSize,
+class AllCar extends Car {
+    AllCar (String color, String model, int year, int wheelSize,
            float engineVol){
         super (color, model, year, wheelSize, engineVol);
     }
@@ -38,6 +38,16 @@ class allCar extends Car {
     String setColor (String color) {
         this.color = color;
         return color;
+    }
+
+    public boolean equals (Car car) {
+        return (this.year == year) && (this.engineVol == engineVol);
+    }
+
+    @Override
+    public String toString() {
+        return "Модель: " + model + " Цвет: " + color + " Год выпуска: " +
+                year + " Диаметр дисков: " + wheelSize + " Объем двигателя: " +engineVol+"\n";
     }
 
     String getModel () {

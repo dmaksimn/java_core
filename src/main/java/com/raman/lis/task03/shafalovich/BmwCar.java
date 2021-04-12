@@ -4,25 +4,12 @@ import java.util.Objects;
 
 public class BmwCar extends Car{
 
-    <T extends Number> BmwCar(int yearOfIssue, T engineVolume, int wheelSize, String color, String options) {
+    BmwCar(int yearOfIssue, CarEngines engines, CarWheels wheels, CarColors colors) {
         setModel("BMW");
         setYearOfIssue(yearOfIssue);
-        setEngineVolume(engineVolume.doubleValue());
-        setWheelSize(wheelSize);
-        setColor(color);
-        setOptions(options);
-    }
-
-    <T extends Number> BmwCar(int yearOfIssue, T engineVolume, int wheelSize, String color) {
-        setModel("BMW");
-        setYearOfIssue(yearOfIssue);
-        setEngineVolume(engineVolume.doubleValue());
-        setWheelSize(wheelSize);
-        setColor(color);
+        setEngineValue(engines.getEngine());
+        setWheelSize(wheels.getWheels());
+        setColor(colors.getColor());
         setOptions("Отсутствуют");
     }
-
-    BmwCar() {
-    }
-
 }

@@ -1,226 +1,200 @@
 package com.raman.lis.task03.bogdanovich;
 
+import java.util.ArrayList;
+
 interface AutoPlants {
 
 }
+
 abstract class AutoPlant implements AutoPlants {
     static final int YEAR = 2021;
+    static String accModel;
+    static ArrayList <String> accColor = new ArrayList<>();
+    static ArrayList <Integer> accWheel = new ArrayList<>();
+    static ArrayList <Float> accEngine = new ArrayList<>();
     static void setCars () {
         //создание склада авто
-        StockCar.cars[StockCar.count] = new allCar("White","Kia",
-                2019, 17,1.7f);
-        StockCar.count++;
-        StockCar.cars[StockCar.count] = new allCar("Green","Bmw",
-                2020, 17,1.6f);
-        StockCar.count++;
-        StockCar.cars[StockCar.count] = new allCar("Black","Ford",
-                2021, 14,1.4f);
-        StockCar.count++;
+        StockCar.cars.add(new AllCar("White","Kia",
+                2019, 17,1.7f));
+        StockCar.cars.add(new AllCar("Green","Bmw",
+                2020, 17,1.6f));
+        StockCar.cars.add(new AllCar("Black","Ford",
+                2021, 14,1.4f));
+
     }
         }
 
 class BmwAutoPlant extends AutoPlant {
 
-    static int on = 0;
-    static String accModel = "Bmw";
-    static String accColor[] = {"Yellow", "Green", "White", "Black"};
-    static int accWheel[] = {14, 15, 16, 17, 18, 19, 20, 21, 22};
-    static float accEngine[] = {1.6f, 1.9f, 2.8f, 2.3f, 2.7f, 3.0f, 3.3f};
-
     static void createCar(String color, String model, int year,
-                          int wheel, float engine) {
+                          int wheel, float engine) throws MyException {
+        accColor.clear();
+        accWheel.clear();
+        accEngine.clear();
+        accModel = "Bmw";
+        accColor.add("Yellow");
+        accColor.add("Brown");
+        accColor.add("White");
+        accColor.add("Green");
+        accWheel.add(14);
+        accWheel.add(15);
+        accWheel.add(16);
+        accWheel.add(17);
+        accWheel.add(18);
+        accWheel.add(19);
+        accWheel.add(20);
+        accWheel.add(21);
+        accWheel.add(22);
+        accEngine.add(1.6f);
+        accEngine.add(1.9f);
+        accEngine.add(2.0f);
+        accEngine.add(2.3f);
+        accEngine.add(2.7f);
+        accEngine.add(3.0f);
+        accEngine.add(3.3f);
         if (model == accModel) {
-            on++;
-        }
-
-        for (int i = 0; i < accColor.length; i++) {
-            if (color == accColor[i]) {
-                on++;
+            if ((accColor.contains(color)) && (accWheel.contains(wheel))
+                    && (accEngine.contains(engine)) && (year == YEAR)) {
+                StockCar.cars.add(new AllCar(color, accModel,
+                        year, wheel, engine));
+                System.out.println("Автомобиль успешно создан");
+            } else {
+                throw new MyException("Данный автомобиль завод " + accModel +
+                        " не может создать");
             }
-        }
-
-        for (int i = 0; i < accWheel.length; i++) {
-            if (wheel == accWheel[i]) {
-                on++;
-            }
-        }
-
-        for (int i = 0; i < accEngine.length; i++) {
-            if (engine == accEngine[i]) {
-                on++;
-            }
-        }
-
-        if (on == 4) {
-            StockCar.cars[StockCar.count] = new allCar(color, accModel,
-                    YEAR, wheel, engine);
-            on = 0;
-            StockCar.count++;
         } else {
-            System.out.println("Данный автомобиль не может быть создан");
-            on = 0;
+            throw new MyException("Автомобиль " + model + " завод " + accModel +
+                    " не может создать");
         }
     }
 
     //вывод цветов в которые можно покрасить авто
     static void printColor() {
-        System.out.println("Список цветов, в которые можно покрасить авто:");
-        for (int i = 0; i < accColor.length; i++) {
-            System.out.print(accColor[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны цвета :" + accColor);
     }
 
     //вывод дисков колес которые можно установить
     static void printWheel() {
-        System.out.println("Список дисков колес, которые можно установить:");
-        for (int i = 0; i < accWheel.length; i++) {
-            System.out.print(accWheel[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны диски для колес :" + accWheel);
     }
 
     //вывод двигателей которые можно установить
     static void printEngine() {
-        System.out.println("Список двигателей которые можно установить:");
-        for (int i = 0; i < accEngine.length; i++) {
-            System.out.print(accEngine[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны двигатели :" +accEngine);
     }
 }
 
 class FordAutoPlant extends AutoPlant{
 
-    static int on = 0;
-    static String accModel = "Ford";
-    static String accColor[] = {"Yellow", "Green", "White", "Black", "Blue"};
-    static int accWheel[] = {14, 15, 16, 17, 18, 19, 20, 21, 22};
-    static float accEngine[] = {1.4f, 1.5f, 1.6f, 1.7f, 1.9f, 2.0f};
-
     static void createCar (String color, String model, int year,
-                           int wheel, float engine) {
+                           int wheel, float engine) throws MyException{
+        accColor.clear();
+        accWheel.clear();
+        accEngine.clear();
+        accModel = "Ford";
+        accColor.add("Yellow");
+        accColor.add("Green");
+        accColor.add("White");
+        accColor.add("Black");
+        accColor.add("Blue");
+        accWheel.add(14);
+        accWheel.add(15);
+        accWheel.add(16);
+        accWheel.add(17);
+        accWheel.add(18);
+        accWheel.add(19);
+        accEngine.add(1.4f);
+        accEngine.add(1.5f);
+        accEngine.add(1.6f);
+        accEngine.add(1.7f);
+        accEngine.add(1.9f);
+        accEngine.add(2.0f);
 
         if (model == accModel) {
-            on++;
-        }
-
-        for (int i = 0; i < accColor.length; i++){
-            if (color == accColor[i]) {
-                on++;
+            if ((accColor.contains(color)) && (accWheel.contains(wheel))
+                    && (accEngine.contains(engine))) {
+                StockCar.cars.add(new AllCar(color, accModel,
+                        YEAR, wheel, engine));
+                System.out.println("Автомобиль успешно создан");
+            } else {
+                throw new MyException("Данный автомобиль завод " + accModel +
+                        " не может создать");
             }
-        }
-
-        for (int i = 0; i < accWheel.length; i++){
-            if (wheel == accWheel[i]) {
-                on++;
-            }
-        }
-
-        for (int i = 0; i < accEngine.length; i++){
-            if (engine == accEngine[i]) {
-                on++;
-            }
-        }
-
-        if (on == 4) {
-            StockCar.cars[StockCar.count] = new allCar(color, accModel,
-                    YEAR, wheel, engine);
-            on = 0;
-            StockCar.count++;
         } else {
-            System.out.println("Данный автомобиль не может быть создан");
-            on = 0;
+            throw new MyException("Автомобиль " + model + " завод " + accModel +
+                    " не может создать");
         }
     }
 
     //вывод цветов в которые можно покрасить авто
     static void printColor() {
-        System.out.println("Список цветов, в которые можно покрасить авто:");
-        for (int i = 0; i < accColor.length; i++) {
-            System.out.print(accColor[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны цвета :" + accColor);
     }
 
     //вывод дисков колес которые можно установить
     static void printWheel() {
-        System.out.println("Список дисков колес, которые можно установить:");
-        for (int i = 0; i < accWheel.length; i++) {
-            System.out.print(accWheel[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны диски для колес :" + accWheel);
     }
 
     //вывод двигателей которые можно установить
     static void printEngine() {
-        System.out.println("Список двигателей которые можно установить:");
-        for (int i =0; i < accEngine.length; i++) {
-            System.out.print(accEngine[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны двигатели :" +accEngine);
     }
 }
 
 class KiaAutoPlant extends AutoPlant{
 
-    static int on = 0;
-    static String accModel = "Kia";
-    static String accColor[] = {"Yellow", "Green", "White", "Black", "Red"};
-    static int accWheel[] = { 15, 16, 17, 18};
-    static float accEngine[] = {1.4f, 1.6f, 1.7f, 1.9f, 2.0f, 2.2f};
-
     static void createCar (String color, String model, int year,
-                           int wheel, float engine) {
+                           int wheel, float engine) throws MyException {
+
+        accColor.clear();
+        accWheel.clear();
+        accEngine.clear();
+        accModel = "Kia";
+        accColor.add("Yellow");
+        accColor.add("Green");
+        accColor.add("White");
+        accColor.add("Black");
+        accColor.add("Red");
+        accWheel.add(15);
+        accWheel.add(16);
+        accWheel.add(17);
+        accWheel.add(18);
+        accEngine.add(1.4f);
+        accEngine.add(1.6f);
+        accEngine.add(1.7f);
+        accEngine.add(1.9f);
+        accEngine.add(2.0f);
+        accEngine.add(2.2f);
 
         if (model == accModel) {
-            on++;
-        }
-
-        for (int i = 0; i < accColor.length; i++){
-            if (color == accColor[i]) {
-                on++;
+            if ((accColor.contains(color)) && (accWheel.contains(wheel))
+                    && (accEngine.contains(engine))) {
+                StockCar.cars.add(new AllCar(color, accModel,
+                        YEAR, wheel, engine));
+                System.out.println("Автомобиль успешно создан");
+            } else {
+                throw new MyException("Данный автомобиль завод " + accModel +
+                        " не может создать");
             }
-        }
-
-        for (int i = 0; i < accWheel.length; i++){
-            if (wheel == accWheel[i]) {
-                on++;
-            }
-        }
-
-        for (int i = 0; i < accEngine.length; i++){
-            if (engine == accEngine[i]) {
-                on++;
-            }
-        }
-
-        if (on == 4) {
-            StockCar.cars[StockCar.count] = new allCar(color, accModel,
-                    YEAR, wheel, engine);
-            on = 0;
-            StockCar.count++;
         } else {
-            System.out.println("Данный автомобиль не может быть создан");
-            on = 0;
+            throw new MyException("Автомобиль " + model + " завод " + accModel +
+                    " не может создать");
         }
     }
 
     //вывод цветов в которые можно покрасить авто
     static void printColor() {
-        System.out.println("Список цветов, в которые можно покрасить авто:");
-        for (int i = 0; i < accColor.length; i++) {
-            System.out.print(accColor[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны цвета :" + accColor);
     }
 
     //вывод дисков колес которые можно установить
     static void printWheel() {
-        System.out.println("Список дисков колес, которые можно установить:");
-        for (int i = 0; i < accWheel.length; i++) {
-            System.out.print(accWheel[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны диски для колес :" + accWheel);
     }
 
     //вывод двигателей которые можно установить
     static void printEngine() {
-        System.out.println("Список двигателей которые можно установить:");
-        for (int i =0; i < accEngine.length; i++) {
-            System.out.print(accEngine[i] + " ");
-        }
+        System.out.println("На заводе " + accModel + " доступны двигатели :" +accEngine);
     }
 }

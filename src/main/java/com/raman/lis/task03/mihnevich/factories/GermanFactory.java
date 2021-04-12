@@ -1,17 +1,15 @@
-package com.raman.lis.task03.mihnevich.factories.impl;
+package com.raman.lis.task03.mihnevich.factories;
 
 import com.raman.lis.task03.mihnevich.cars.Car;
 import com.raman.lis.task03.mihnevich.cars.Model;
-import com.raman.lis.task03.mihnevich.cars.impl.*;
-import com.raman.lis.task03.mihnevich.factories.Factory;
+import com.raman.lis.task03.mihnevich.cars.impl.Audi;
+import com.raman.lis.task03.mihnevich.cars.impl.Bmw;
+import com.raman.lis.task03.mihnevich.cars.impl.Opel;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class GermanFactory extends Factory {
-    public GermanFactory() {
-        createStorage();
-    }
 
     @Override
     protected Car createNewCar(String color, List<String> options, Model model, int year, int wheelSize, double engineVolume) {

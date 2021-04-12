@@ -2,14 +2,14 @@ package com.raman.lis.task03.mihnevich.factories;
 
 import com.raman.lis.task03.mihnevich.cars.Car;
 import com.raman.lis.task03.mihnevich.cars.Model;
-import com.raman.lis.task03.mihnevich.services.*;
+import com.raman.lis.task03.mihnevich.services.IColorService;
+import com.raman.lis.task03.mihnevich.services.IOptionService;
+import com.raman.lis.task03.mihnevich.services.IWheelSizeService;
 import com.raman.lis.task03.mihnevich.services.impl.ColorServiceImpl;
 import com.raman.lis.task03.mihnevich.services.impl.OptionServiceImpl;
 import com.raman.lis.task03.mihnevich.services.impl.WheelSizeServiceImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public abstract class Factory implements IFactory {
     private List<Car> storage;
@@ -19,44 +19,49 @@ public abstract class Factory implements IFactory {
 
 
     public void createStorage() {
+        if (storage != null) {
+            return;
+        }
         storage = new ArrayList<>();
         Random random = new Random();
         int modelLength = getModels().size();
         int colorsLength = getColors().size();
         int wheelSizesLength = getWheelSizes().size();
         int engineVolumesLength = getEngineVolumes().size();
+        Calendar calendar = new GregorianCalendar();
+        int currentYear = calendar.get(Calendar.YEAR);
         for (int i = 0; i < 100; i++) {
             int modelIndex = random.nextInt(modelLength);
             int colorsIndex = random.nextInt(colorsLength);
             int wheelSizesIndex = random.nextInt(wheelSizesLength);
             int engineVolumesIndex = random.nextInt(engineVolumesLength);
-            storage.add(createCar(getColors().get(colorsIndex), null, getModels().get(modelIndex), 2021,
+            storage.add(createCar(getColors().get(colorsIndex), null, getModels().get(modelIndex), currentYear,
                     getWheelSizes().get(wheelSizesIndex), getEngineVolumes().get(engineVolumesIndex)));
         }
     }
 
     @Override
     public Car createCar(String color, List<String> options, Model model, int year, int wheelSize, double engineVolume) {
-        if (getColors().contains(color) && getModels().contains(model) &&
-                getEngineVolumes().contains(engineVolume) && getWheelSizes().contains(wheelSize)) {
-            for (Car car : storage) {
-                if (car != null && color == car.getColor() && model == car.getModel() &&
-                        year == car.getYear() && wheelSize == car.getWheelSize() &&
-                        engineVolume == car.getEngineVolume() && checkOptions(options, car)) {
-                    return car;
-                }
+        for (Car car : storage) {
+            if (car != null && car.getColor().equals(color) && model == car.getModel() &&
+                    year == car.getYear() && wheelSize == car.getWheelSize() &&
+                    engineVolume == car.getEngineVolume() && checkListStringEquals(options, car.getOptions())) {
+                return car;
             }
-            return createNewCar(color, options, model, year, wheelSize, engineVolume);
-        } else {
-            return null;
         }
+        Car newCar = createNewCar(color, options, model, year, wheelSize, engineVolume);
+        if (newCar == null) {
+            throw new IllegalArgumentException("There is no factory for creating model: " + model);
+        }
+        return newCar;
     }
 
-    private boolean checkOptions(List<String> options, Car car) {
-        if (options == null && car.getOptions() == null) {
+
+    private boolean checkListStringEquals(List<String> list1, List<String> list2) {
+        if (list1 == null && list2 == null) {
             return true;
         }
-        return options != null && options.equals(car.getOptions());
+        return list1 != null && list1.equals(list2);
     }
 
     protected abstract Car createNewCar(String color, List<String> options,
@@ -66,18 +71,14 @@ public abstract class Factory implements IFactory {
     public Car getMostSuitableCar(String color, List<String> options, Model model, int year, int wheelSize, double engineVolume) {
         for (Car car : storage) {
             if (model == car.getModel() && year == car.getYear() && engineVolume == car.getEngineVolume()) {
-                colorService.changeColor(car, color);
-                wheelSizeService.changeWheelSize(car, wheelSize);
-                List<String> currentOptions = car.getOptions();
-                if (currentOptions != null) {
-                    for (String option : currentOptions) {
-                        optionService.deleteOption(car, option);
-                    }
+                if (!car.getColor().equals(color)) {
+                    colorService.changeColor(car, color);
                 }
-                if (options != null) {
-                    for (String option : options) {
-                        optionService.addOption(car, option);
-                    }
+                if (car.getWheelSize() != wheelSize) {
+                    wheelSizeService.changeWheelSize(car, wheelSize);
+                }
+                if (!checkListStringEquals(car.getOptions(), options)) {
+                    configOptions(car, options);
                 }
                 return car;
             }
@@ -85,38 +86,79 @@ public abstract class Factory implements IFactory {
         return null;
     }
 
+    private void configOptions(Car car, List<String> options) {
+        if (options == null) {
+            for (String option : car.getOptions()) {
+                optionService.deleteOption(car, option);
+            }
+            return;
+        }
+        if (car.getOptions() == null) {
+            for (String option : options) {
+                optionService.addOption(car, option);
+            }
+            return;
+        }
+        for (String option : car.getOptions()) {
+            if (!options.contains(option)) {
+                optionService.deleteOption(car, option);
+            }
+        }
+        for (String option : options) {
+            if (!car.getOptions().contains(option)) {
+                optionService.addOption(car, option);
+            }
+        }
+    }
+
+
     @Override
     public void printModels() {
-        for (Model model : getModels()) {
-            System.out.print(model + " ");
+        List<Model> models = getModels();
+        if (models != null) {
+            for (Model model : models) {
+                System.out.print(model + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     @Override
     public void printColors() {
-        for (String color : getColors()) {
-            System.out.print(color + " ");
+        List<String> colors = getColors();
+        if (colors != null) {
+            for (String color : colors) {
+                System.out.print(color + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     @Override
     public void printWheelSizes() {
-        for (Integer wheelSize : getWheelSizes()) {
-            System.out.print(wheelSize + " ");
+        List<Integer> wheelSizes = getWheelSizes();
+        if (wheelSizes != null) {
+            for (Integer wheelSize : wheelSizes) {
+                System.out.print(wheelSize + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     @Override
     public void printEngineVolumes() {
-        for (Double engineVolume : getEngineVolumes()) {
-            System.out.print(engineVolume + " ");
+        List<Double> engineVolumes = getEngineVolumes();
+        if (engineVolumes != null) {
+            for (Double engineVolume : engineVolumes) {
+                System.out.print(engineVolume + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
+    public List<Car> getStorage() {
+        return storage;
+    }
 
     public abstract List<Model> getModels();
 

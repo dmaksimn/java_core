@@ -1,100 +1,107 @@
 package com.raman.lis.task03.bogdanovich;
 
 abstract class Salon {
-    static boolean on;
-    static int number = 0;
+    static int number;
+    static String accModel;
+    static boolean reColor;
 }
 
 class BmwSalon extends Salon {
 
-     static String accModel = "Bmw";
-
     //заказ авто на заводе
     static void orderCar(String color, String model, int year, int wheelS,
-                         float engineV) {
+                         float engineV) throws MyException{
+        accModel = "Bmw";
+        number = -1;
         if (model == accModel) {
-            //on = false;
-            for (int i = 0; i < StockCar.count; i++) {
-                if ((StockCar.cars[i].getModel() == model) &&
-                        (StockCar.cars[i].getEngineVol() == engineV) &&
-                        (StockCar.cars[i].getYear() == year)) {
-                    on = true;
+            for (int i = 0; i < StockCar.cars.size(); i++) {
+                if ((StockCar.cars.get(i).year == year) &&
+                        (StockCar.cars.get(i).model == model) &&
+                        (StockCar.cars.get(i).engineVol == engineV)) {
                     number = i;
                 }
             }
-            if (on) {
-                System.out.println("Автомобиль с заданными параметрами существует на складе");
-                ColorService.change(number, color);
-                WheelService.change(number, wheelS);
-                StockCar.cars[number].printCar();
+            if (number != -1) {
+                System.out.println("Автомобиль с такими характеристиками есть " +
+                        "на складе номер " + (number + 1) + ", но его нужно перекрасить" +
+                        " и/или заменить диски");
             } else {
-                BmwAutoPlant.createCar(color, accModel, AutoPlant.YEAR,
-                        wheelS, engineV);
+                try {
+                    BmwAutoPlant.createCar(color, accModel, year,
+                            wheelS, engineV);
+                } catch (MyException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         } else {
-            System.out.println("Данный салон не может заказать такой автомобиль");
+            throw new MyException("Салон " + accModel + " не может заказать " +
+                    "автомобиль " + model);
         }
     }
 }
 
 class FordSalon extends Salon {
 
-    static String accModel = "Ford";
-
     //заказ авто на заводе
     static void orderCar(String color, String model, int year, int wheelS,
-                         float engineV) {
+                         float engineV) throws MyException {
+        accModel = "Ford";
+        number = -1;
         if (model == accModel) {
-            for (int i = 0; i < StockCar.count; i++) {
-                if ((StockCar.cars[i].getModel() == model) &&
-                        (StockCar.cars[i].getEngineVol() == engineV) &&
-                        (StockCar.cars[i].getYear() == year)) {
-                    on = true;
+            for (int i = 0; i < StockCar.cars.size(); i++) {
+                if ((StockCar.cars.get(i).year == year) &&
+                        (StockCar.cars.get(i).model == model) &&
+                        (StockCar.cars.get(i).engineVol == engineV)) {
                     number = i;
                 }
             }
-            if (on) {
-                System.out.println("Автомобиль с заданными параметрами существует на складе");
-                ColorService.change(number, color);
-                WheelService.change(number, wheelS);
-                StockCar.cars[number].printCar();
+            if (number != -1) {
+                System.out.println("Автомобиль с такими характеристиками есть " +
+                        "на складе номер " + (number + 1) + ", но его нужно перекрасить" +
+                        " и/или заменить диски");
             } else {
-                FordAutoPlant.createCar(color, accModel, AutoPlant.YEAR,
-                        wheelS, engineV);
+                try {
+                    FordAutoPlant.createCar(color, accModel, year,
+                            wheelS, engineV);
+                } catch (MyException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         } else {
-            System.out.println("Данный салон не может заказать такой автомобиль");
+            throw new MyException("Салон " + accModel + " не может заказать автомобиль " + model);
         }
     }
 }
 
 class KiaSalon extends Salon {
 
-    static String accModel = "Kia";
-
     //заказ авто на заводе
     static void orderCar(String color, String model, int year, int wheelS,
-                         float engineV) {
+                         float engineV) throws MyException {
+        accModel = "Kia";
+        number = -1;
         if (model == accModel) {
-            for (int i = 0; i < StockCar.count; i++) {
-                if ((StockCar.cars[i].getModel() == model) &&
-                        (StockCar.cars[i].getEngineVol() == engineV) &&
-                        (StockCar.cars[i].getYear() == year)) {
-                    on = true;
+            for (int i = 0; i < StockCar.cars.size(); i++) {
+                if ((StockCar.cars.get(i).year == year) &&
+                        (StockCar.cars.get(i).model == model) &&
+                        (StockCar.cars.get(i).engineVol == engineV)) {
                     number = i;
                 }
             }
-            if (on) {
-                System.out.println("Автомобиль с заданными параметрами существует на складе");
-                ColorService.change(number, color);
-                WheelService.change(number, wheelS);
-                StockCar.cars[number].printCar();
+            if (number != -1) {
+                System.out.println("Автомобиль с такими характеристиками есть " +
+                        "на складе номер " + (number + 1) + ", но его нужно перекрасить" +
+                        " и/или заменить диски");
             } else {
-                KiaAutoPlant.createCar(color, accModel, AutoPlant.YEAR,
-                        wheelS, engineV);
+                try {
+                    KiaAutoPlant.createCar(color, accModel, year,
+                            wheelS, engineV);
+                } catch (MyException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         } else {
-            System.out.println("Данный салон не может заказать такой автомобиль");
+            throw new MyException("Салон " + accModel + " не может заказать автомобиль " + model);
         }
     }
 }

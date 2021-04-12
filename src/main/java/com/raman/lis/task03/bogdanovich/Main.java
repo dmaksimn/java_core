@@ -4,21 +4,38 @@ public class Main {
 
     public static void main(String[] args) {
         AutoPlant.setCars();//Создание авто на складе
-        //BmwAutoPlant.createCar("Black","Ford",2000,22,1.6f);//Создание нового авто Bmw
-        //FordAutoPlant.createCar("Black","Ford",2000,22,1.6f);//Создание нового авто Ford
-        //KiaAutoPlant.createCar("Black","Ford",2000,22,1.6f);//Создание нового авто Kia
 
-        //KiaAutoPlant.printColor();//Вывод возможных цветов для покраски
-        //KiaAutoPlant.printWheel();//Вывод дисков для авто
-        //KiaAutoPlant.printEngine();//Вывод возможных двигателей
+        /*try{//Создание нового авто Bmw
+            KiaAutoPlant.createCar("White","Kia",2000,15,1.6f);
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+        */
 
-        //StockCar.printCarAll();//Вывод авто, которые есть на складе
+        //BmwAutoPlant.printColor();//Вывод возможных цветов для покраски
+        //BmwAutoPlant.printWheel();//Вывод дисков для авто
+        //BmwAutoPlant.printEngine();//Вывод возможных двигателей
 
-        //BmwSalon.orderCar("Brown", "Bmw",2018,20,1.7f);//Заказ авто Bmw
-        //FordSalon.orderCar("Green", "Ford",2018,20,1.7f);//Заказ авто Ford
-        //KiaSalon.orderCar("Green", "Ford",2018,20,1.7f);//Заказ авто Kia
+        StockCar.printCarAll();//Вывод авто, которые есть на складе
 
-        //ColorService.change(1, "Red");//смена цвета авто
-        //WheelService.change(2, 18);//Смена дисков
+        try {
+            FordSalon.orderCar("Дфдф", "Audi",2020,30,1.4f);//Заказ авто Bmw
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+
+        /*try {
+            ColorService.change(1, "Orange");//смена цвета авто
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }*/
+
+        /*try {
+            WheelService.change(1, 25);//смена дисков
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+        */
+        StockCar.printCarAll();
     }
 }

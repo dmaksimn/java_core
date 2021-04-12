@@ -1,10 +1,10 @@
 package com.raman.lis.task03.shafalovich;
 
 public enum CarColors {
-    BLACK ("Black"),
-    WHITE ("White"),
-    RED ("Red"),
-    BLUE ("Blue");
+    BLACK("Black"),
+    WHITE("White"),
+    RED("Red"),
+    BLUE("Blue");
 
     private String string;
 
