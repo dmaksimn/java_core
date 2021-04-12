@@ -1,74 +1,99 @@
 package com.raman.lis.task02.bodrova;
 
-
-
-/* Автозавод (Должен быть создан в методе "mein", использоваться же может автосолоном).
-   Имеет следующие особености:
-       * Имеет список моделей которые может создавать. Этот список должен задаваться
-         во время создания.
-       * Имеет список с объемами двигателей которые можно установить на автомобиль.
-         Этот список должен задаваться во время создания.
-       * Имеет Список цветов в которые можно покрасить автомобиль. Этот список
-         должен задаваться во время создания.
-       * Имеет список размеров колес которые можно установить на автомобиль. Этот
-         список должен задаваться во время создания.
-       * Завод имеет склад, во время создания завода он производит некоторое кол-во
-         автомобилей и хранит их на складе.
-       * Имеет доступ к сервису.
-   Имеет следующие возможности:
-        * Ожидается возможность вывода на печать возможных для производства
-          цветов/обьемов двигателей/моделей/размеров дисков
-        * Создать автомобиль по заказу салона. Однако если автомобиль есть на
-          складе он должен быть использован вместо создания нового.
-        * Ожидается возможность выбора со склада наиболее подходяшего автомобиля
-          и изменения его согласно заказу.  */
+import java.util.ArrayList;
+import java.util.List;
 
 public class Factory {
 
-    String[] model = {"CLS", "Maybach", "Vito"};      //список моделей
-    int[] engine_volume = {1500, 2900, 3900};         //список объемов двигателя
-    String[] color = {"red", "silver", "black"};      //список цветов
-    String[] wheel_size = {"R18", "R17", "R16"};      //список размеров колес
-    String[] option = {"heated seats","parktronic",""};  //список опций
-    Car[] carPark = new Car[2];
+    private final String [] models;
+    private final int [] engineVolumes;
+    private final String [] colors;
+    private final String [] wheelSizes;
 
-    //конструктор завода с одновременным созданием двух автомобилей на склад
-    public Factory(){
-        Car car1 = new Car("Maybach", 3900, "silver", "R18", "heated seats");
-        carPark[0] = car1;
-        Car car2 = new Car("Vito", 2900, "black", "R17", "");
-        carPark[1] = car2;
-        System.out.println("На складе в наличии следующие автомобили:");
-        car1.printCar();
+    private List<Car> storehouseCars = new ArrayList<>();
+
+    private Service service = new Service(this);;
+
+
+    public Factory(String[] models, int[] engineVolumes,
+                   String[] colors, String[] wheelSizes) {
+        this.models = models;
+        this.engineVolumes = engineVolumes;
+        this.colors = colors;
+        this.wheelSizes = wheelSizes;
+        storehouseCars.add(new Car("Mercedes", "CLS", 2021,
+                1500, "red", "R18"));
+        storehouseCars.add(new Car("Mercedes", "Vito", 2010,
+                2900, "silver", "R16"));
+        storehouseCars.add(new Car("Mercedes", "Maybach", 2015,
+                3900, "black", "R17"));
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public List<Car> getStorehouseCars() {
+        return storehouseCars;
+    }
+
+    public String[] getColors() {
+        return colors;
+    }
+
+    public String[] getWheelSizes() {
+        return wheelSizes;
+    }
+
+    public void printModelsList () {
+        System.out.println("Список доступных моделей: ");
+        for (String model : models) {
+            System.out.print(model + " ");
+        }
         System.out.println();
-        car2.printCar();
     }
 
-    //метод создания нового автомобиля
-    Car create(String model, int engine_volume, String color, String wheel_size, String option) {
-        Car car = new Car(model, engine_volume, color, wheel_size, option);
-        return car;
-    }
+    public void printEngineVolumesList () {
+        System.out.println("Доступные объемы двигателя: ");
+        for (int engineVolume : engineVolumes) {
+            System.out.print(engineVolume + " ");
+        }
 
-    //метод вывода возможных характеристик автомобилей
-    public void carProperties() {
         System.out.println();
-        System.out.println("Завод производит следующие модели:");
-        for (int i = 0; i < model.length; i++) {
-            System.out.println(model[i]);
-        }
-        System.out.println("Завод производит двигатели объемом:");
-        for (int i = 0; i < engine_volume.length; i++) {
-            System.out.println(engine_volume[i]);
-        }
-        System.out.println("Завод производит автомобили цветов:");
-        for (int i = 0; i < color.length; i++) {
-            System.out.println(color[i]);
-        }
-        System.out.println("Завод производит размеры колес:");
-        for (int i = 0; i < wheel_size.length; i++) {
-            System.out.println(wheel_size[i]);
-        }
     }
 
+    public void printColorsList () {
+        System.out.println("Доступные цвета кузова: ");
+        for (String color : colors) {
+            System.out.print(color + " ");
+        }
+        System.out.println();
+    }
+
+    public void printWheelSizeList() {
+        System.out.println("Доступные размеры колес: ");
+        for (String wheelSize : wheelSizes) {
+            System.out.print(wheelSize + " ");
+        }
+
+        System.out.println();
+    }
+
+    public void createCar (Car orderedCar) {
+        for (Car storehouseCar : storehouseCars) {
+            if (storehouseCar.equals(orderedCar)){
+                System.out.println("Такой автомобиль уже есть на складе!");
+                return;
+            }
+        }
+        System.out.println("Этот автомобиль изготовлен и добавлен на склад!");
+        storehouseCars.add(orderedCar);
+    }
+
+    public void showStorage(){
+        System.out.println("Заводской склад содержит следующие автомобили: ");
+        for (int i = 0; i < storehouseCars.size(); i++) {
+            System.out.println(i+1 + " " + storehouseCars.get(i));
+        }
+    }
 }
