@@ -120,14 +120,5 @@ public class AudiFactory extends CarFactory {
         return sportCar;
     }
 
-    @Override
-    public TruckCar createNewTruckCar(String color, String model,
-                                      int diameterOfWheels, double volumeOfEngine,
-                                      int liftingCapacity) {
-
-        System.out.println(BRAND + "does not produce cars of this type");
-        return null;
-    }
-
 
 }
