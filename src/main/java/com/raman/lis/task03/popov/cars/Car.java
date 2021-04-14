@@ -31,31 +31,31 @@ public abstract class Car implements Cars {
     }
 
     public String findElement(LinkedList<String> list, String element) {
-        int i = 0;
-        String element1 = null;
         for (String anyElement : list) {
             if (element.equals(anyElement)) {
-                element1 = anyElement;
-                i = 1;
-            } else if (i == 0) {
-                element1 = "Такого нет в продаже!";
+                return element;
             }
         }
-        return element1;
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Такого элемента нет " + element);;
+        }
+        return null;
     }
 
     public int findElement(LinkedList<Integer> list, int element) {
-        int a = 0;
-        int i = 0;
         for (Integer anyElement : list) {
             if (element == (anyElement)) {
-                a = element;
-                i = 1;
-            } else if (i == 0) {
-                a = 0;
+                return element;
             }
         }
-        return a;
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Такого элемента нет " + element);
+        }
+        return 0;
     }
 
     public void setColour(String colour) {

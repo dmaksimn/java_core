@@ -10,12 +10,14 @@ public abstract class AutoFactory implements Print {
     private final String[] arrayTypeCar = {"Sedan", "Universal", "Hatchback", "Minivan", "Off-road"};
     private final Integer[] arraySizeWheels = {14, 15, 16, 17, 13};
     private final Integer[] arrayVolumeEngine = {3700, 4300, 5700, 2100, 2900};
+    private final String[] arrayModels = {"Audi", "BMV", "Ferrari"};
 
     private LinkedList<String> listColour = new LinkedList<>(Arrays.asList(arrayColour));
     private LinkedList<String> listTypeCar = new LinkedList<>(Arrays.asList(arrayTypeCar));
     private LinkedList<String> listDate = new LinkedList<>();
     private LinkedList<Integer> listSizeWheels = new LinkedList<>(Arrays.asList(arraySizeWheels));
     private LinkedList<Integer> listVolumeEngine = new LinkedList<>(Arrays.asList(arrayVolumeEngine));
+    private LinkedList<String> listModels = new LinkedList<>(Arrays.asList(arrayModels));
     private LinkedList<Car> storage = new LinkedList<>();
 
     public abstract Car createCar(String colour, int sizeWheels,
@@ -43,6 +45,10 @@ public abstract class AutoFactory implements Print {
 
     public LinkedList<Car> getStorage() {
         return storage;
+    }
+
+    public LinkedList<String> getListModels() {
+        return listModels;
     }
 
     public String addStorge(Car car){
