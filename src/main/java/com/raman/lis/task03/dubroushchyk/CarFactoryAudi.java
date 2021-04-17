@@ -14,11 +14,11 @@ public class CarFactoryAudi extends CarFactory {
         super(serviceColor, serviceWheels, serviceOptional);
 
         addCarInStorage(new CarAudi(CarColorAudi.WHITE, CarModelAudi.A4,
-                2016, CarSizeWheelsAudi.Low, CarEngineVolumeAudi.LOW_VOLUME));
+                2016, CarSizeWheelsAudi.LOW_17, CarEngineVolumeAudi.LOW_1600));
         addCarInStorage(new CarAudi(CarColorAudi.PINK, CarModelAudi.A6,
-                2018, CarSizeWheelsAudi.MIDDLE, CarEngineVolumeAudi.MIDDLE_VOLUME));
+                2018, CarSizeWheelsAudi.MIDDLE_19, CarEngineVolumeAudi.MIDDLE_3000));
         addCarInStorage(new CarAudi(CarColorAudi.BLACK, CarModelAudi.A8,
-                2020, CarSizeWheelsAudi.HIGH, CarEngineVolumeAudi.HIGH_VOLUME));
+                2020, CarSizeWheelsAudi.HIGH_20, CarEngineVolumeAudi.HIGH_4000));
     }
 
     public Car createCar(CarColorAudi color, CarModelAudi model, int yearProduction,

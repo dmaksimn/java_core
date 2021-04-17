@@ -1,4 +1,4 @@
-package com.raman.lis.task03.dubroushchyk.Enum.Mercedes;
+package com.raman.lis.task03.dubroushchyk.Enum.Bmw;
 
 import com.raman.lis.task03.dubroushchyk.ICarSizeWheels;
 

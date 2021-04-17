@@ -13,16 +13,16 @@ public class CarFactoryBmw extends CarFactory {
                          ServiceOptional serviceOptional) {
         super(serviceColor, serviceWheels, serviceOptional);
 
-        addCarInStorage(new CarBmw(CarColorBmw.RED,CarModelBmw.M4, 2020,
-                CarSizeWheelsBmw.Low, CarEngineVolumeBmw.LOW_VOLUME));
-        addCarInStorage(new CarBmw(CarColorBmw.YELLOW,CarModelBmw.M5, 2005,
-                CarSizeWheelsBmw.MIDDLE, CarEngineVolumeBmw.MIDDLE_VOLUME));
-        addCarInStorage(new CarBmw(CarColorBmw.BLACK,CarModelBmw.X6, 2009,
-                CarSizeWheelsBmw.HIGH, CarEngineVolumeBmw.HIGH_VOLUME));
+        addCarInStorage(new CarBmw(CarColorMercedes.RED, CarModelMercedes.M4, 2020,
+                CarSizeWheelsMercedes.LOW_17, CarEngineVolumeMercedes.LOW_2000));
+        addCarInStorage(new CarBmw(CarColorMercedes.YELLOW, CarModelMercedes.M5, 2005,
+                CarSizeWheelsMercedes.MIDDLE_18, CarEngineVolumeMercedes.MIDDLE_2200));
+        addCarInStorage(new CarBmw(CarColorMercedes.BLACK, CarModelMercedes.X6, 2009,
+                CarSizeWheelsMercedes.HIGH_20, CarEngineVolumeMercedes.HIGH_3500));
     }
 
-    public Car createCar(CarColorBmw color, CarModelBmw model, int yearProduction,
-                         CarSizeWheelsBmw sizeWheels, CarEngineVolumeBmw engineVolume)
+    public Car createCar(CarColorMercedes color, CarModelMercedes model, int yearProduction,
+                         CarSizeWheelsMercedes sizeWheels, CarEngineVolumeMercedes engineVolume)
                          throws IllegalArgumentException {
         if (yearProduction > currentYear || yearProduction < minYearForCreateCar) {
             throw new IllegalArgumentException("Illegal value yearProduction for carFactoryBMW in" +
@@ -45,10 +45,10 @@ public class CarFactoryBmw extends CarFactory {
     public void printPropertyCar() {
         StringBuilder builder = new StringBuilder();
         builder.append("Вывод списка возможных свойст авто завода BMW" + "\n");
-        builder.append("Возможный цвет авто: " + Arrays.toString(CarColorBmw.values()) + "\n");
-        builder.append("Возможный объём двигателя: " + Arrays.toString(CarEngineVolumeBmw.values()) + "\n");
-        builder.append("Возможная модель авто: " + Arrays.toString(CarModelBmw.values()) + "\n");
-        builder.append("Возможный размер дисков: " + Arrays.toString(CarSizeWheelsBmw.values()) + "\n");
+        builder.append("Возможный цвет авто: " + Arrays.toString(CarColorMercedes.values()) + "\n");
+        builder.append("Возможный объём двигателя: " + Arrays.toString(CarEngineVolumeMercedes.values()) + "\n");
+        builder.append("Возможная модель авто: " + Arrays.toString(CarModelMercedes.values()) + "\n");
+        builder.append("Возможный размер дисков: " + Arrays.toString(CarSizeWheelsMercedes.values()) + "\n");
         System.out.println(builder);
     }
 }
