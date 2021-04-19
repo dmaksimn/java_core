@@ -1,15 +1,12 @@
 package com.raman.lis.task03.shafalovich;
 
-import java.util.Objects;
+import com.raman.lis.task03.shafalovich.enums.CarColors;
+import com.raman.lis.task03.shafalovich.enums.CarEngines;
+import com.raman.lis.task03.shafalovich.enums.CarWheels;
 
-public class BmwCar extends Car{
+public class BmwCar extends Car {
 
     BmwCar(int yearOfIssue, CarEngines engines, CarWheels wheels, CarColors colors) {
-        setModel("BMW");
-        setYearOfIssue(yearOfIssue);
-        setEngineValue(engines.getEngine());
-        setWheelSize(wheels.getWheels());
-        setColor(colors.getColor());
-        setOptions("Отсутствуют");
+        super("BMW", yearOfIssue, engines.getEngine(), wheels.getWheels(), colors.getColor());
     }
 }
