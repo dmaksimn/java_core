@@ -6,7 +6,11 @@ import java.util.ArrayList;
 
 public interface TruckCarFactoryInterface {
 
-    TruckCar createNewTruckCar(String color, String model, int diameterOfWheels,
-                           double volumeOfEngine, int liftingCapacity);
+    default TruckCar createNewTruckCar(String color, String model, int diameterOfWheels,
+                           double volumeOfEngine, int liftingCapacity) {
+
+        System.out.println("does not produce cars of this type");
+        return null;
+    }
 
 }

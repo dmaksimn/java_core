@@ -15,7 +15,6 @@ public class Main {
         SportCar sportCar = new SportCar();
         TruckCar truckCar = new TruckCar();
 
-
         AudiFactory audiFactory = new AudiFactory(passengerCar, sportCar,truckCar);
         VolvoFactory volvoFactory = new VolvoFactory(passengerCar, sportCar,truckCar);
         LamborghiniFactory lamborghiniFactory = new LamborghiniFactory(passengerCar, sportCar,truckCar);
