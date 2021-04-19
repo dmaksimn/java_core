@@ -23,17 +23,17 @@ public class AutoFactoryAudi extends AutoFactory implements Print {
             printList(getListVolumeEngine());
         } else if (nameList.toLowerCase().replaceAll(" ", "").equals(str[1])) {
             System.out.println("List of Colour: ");
-            printList1(getListColour());
+            printListString(getListColour());
         } else if (nameList.toLowerCase().replaceAll(" ", "").equals(str[2])) {
             System.out.println("List of Size Wheels: ");
             printList(getListSizeWheels());
         } else if (nameList.toLowerCase().replaceAll(" ", "").equals(str[3])) {
             System.out.println("List of TypeCar: ");
-            printList1(getListTypeCar());
+            printListString(getListTypeCar());
         }
     }
 
-    public void printList1(LinkedList<String> list) {
+    public void printListString(LinkedList<String> list) {
         int i = 1;
         for (String mode : list) {
             System.out.println(i + ") " + mode);
