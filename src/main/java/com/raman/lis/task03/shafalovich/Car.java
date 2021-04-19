@@ -9,28 +9,12 @@ public abstract class Car {
     private int wheelSize;
     private String options;
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
+    protected Car(String model, int yearOfIssue, double engineValue, int wheelSize, String color) {
         this.model = model;
-    }
-
-    public int getYearOfIssue() {
-        return yearOfIssue;
-    }
-
-    public void setYearOfIssue(int yearOfIssue) {
         this.yearOfIssue = yearOfIssue;
-    }
-
-    public double getEngineVolume() {
-        return engineValue;
-    }
-
-    public void setEngineValue(double engineValue) {
         this.engineValue = engineValue;
+        this.wheelSize = wheelSize;
+        this.color = color;
     }
 
     public String getColor() {
@@ -60,9 +44,13 @@ public abstract class Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Модель: " + model + "\n" + "Год выпуска: " + getYearOfIssue()
-                + "\n" + "Объем двигателя: " + getEngineVolume() + "\n" + "Размер колес: " + getWheelSize()
-                + "\n" + "Цвет: " + getColor() + "\n" + "Опции: " + getOptions() + "\n");
+        sb.append("\n\tМодель: ").append(model)
+                .append("\n\tГод выпуска: ").append(yearOfIssue)
+                .append("\n\tОбъем двигателя: ").append(engineValue)
+                .append("\n\tРазмер колес: ").append(wheelSize)
+                .append("\n\tЦвет: ").append(color)
+                .append("\n\tОпции: ").append(options)
+                .append("\n");
         return sb.toString();
     }
 
