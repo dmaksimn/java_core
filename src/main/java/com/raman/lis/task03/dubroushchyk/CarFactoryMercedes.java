@@ -14,11 +14,11 @@ public class CarFactoryMercedes extends CarFactory {
         super(serviceColor, serviceWheels, serviceOptional);
 
         addCarInStorage(new CarMercedes(CarColorMercedes.BLACK,CarModelMercedes.E200,
-                2020, CarSizeWheelsMercedes.Low, CarEngineVolumeMercedes.LOW_VOLUME));
+                2020, CarSizeWheelsMercedes.LOW_17, CarEngineVolumeMercedes.LOW_2000));
         addCarInStorage(new CarMercedes(CarColorMercedes.ORANGE, CarModelMercedes.SLR,
-                2005, CarSizeWheelsMercedes.MIDDLE, CarEngineVolumeMercedes.MIDDLE_VOLUME));
+                2005, CarSizeWheelsMercedes.MIDDLE_18, CarEngineVolumeMercedes.MIDDLE_3000));
         addCarInStorage(new CarMercedes(CarColorMercedes.GREY,CarModelMercedes.GL,
-                2020, CarSizeWheelsMercedes.HIGH, CarEngineVolumeMercedes.HIGH_VOLUME));
+                2020, CarSizeWheelsMercedes.HIGH_20, CarEngineVolumeMercedes.HIGH_4000));
     }
 
     public Car createCar(CarColorMercedes color, CarModelMercedes model, int yearProduction,

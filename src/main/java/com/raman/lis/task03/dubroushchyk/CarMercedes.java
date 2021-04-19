@@ -8,6 +8,6 @@ public class CarMercedes extends Car {
     protected CarMercedes(CarColorMercedes color, CarModelMercedes model, int yearProduction,
                           CarSizeWheelsMercedes sizeWheels, CarEngineVolumeMercedes engineVolume) {
         super(color.getColor(), model.getModel(), yearProduction,
-                sizeWheels.getSizeWheels(), engineVolume.getVolume());
+                Integer.parseInt(sizeWheels.getSizeWheels()), Integer.parseInt(engineVolume.getVolume()));
     }
 }

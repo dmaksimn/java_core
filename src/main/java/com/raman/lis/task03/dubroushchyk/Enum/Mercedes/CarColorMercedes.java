@@ -17,4 +17,9 @@ public enum CarColorMercedes implements ICarColor {
     public String getColor() {
         return string;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(string);
+    }
 }

@@ -3,9 +3,9 @@ package com.raman.lis.task03.dubroushchyk.Enum.Mercedes;
 import com.raman.lis.task03.dubroushchyk.ICarModel;
 
 public enum CarModelMercedes implements ICarModel {
-    E200("Mercedes E200"),
-    SLR("Mercedes SLR"),
-    GL("Mercedes GL");
+    E200("E200"),
+    SLR("SLR"),
+    GL("GL");
 
     private String model;
 
@@ -16,5 +16,10 @@ public enum CarModelMercedes implements ICarModel {
     @Override
     public String getModel() {
         return model;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(model);
     }
 }

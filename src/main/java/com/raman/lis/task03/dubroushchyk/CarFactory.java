@@ -28,7 +28,7 @@ public abstract class CarFactory implements ICarFactory {
                                       ICarSizeWheels sizeWheels, ICarEngine engineVolume) {
         for (int i = 0; i < carStorage.size(); i++) {
             if (carStorage.get(i).compareCar(color.getColor(), model.getModel(), yearProduction,
-                    sizeWheels.getSizeWheels(), engineVolume.getVolume())) {
+                    Integer.parseInt(sizeWheels.getSizeWheels()), Integer.parseInt(engineVolume.getVolume()))) {
                 Car car = carStorage.get(i);
                 carStorage.remove(i);
                 return car;

@@ -21,7 +21,7 @@ public abstract class Car {
         this.engineVolume = engineVolume;
     }
 
-    void info() {
+    public void info() {
                 StringBuilder builder = new StringBuilder();
                 builder.append("Цвет авто: " + color + "\n");
                 builder.append("Марка авто: " + model + "\n");

@@ -1,18 +1,18 @@
 package com.raman.lis.task03.dubroushchyk;
 
-import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarColorBmw;
-import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarEngineVolumeBmw;
-import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarModelBmw;
-import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarSizeWheelsBmw;
+import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarColorMercedes;
+import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarEngineVolumeMercedes;
+import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarModelMercedes;
+import com.raman.lis.task03.dubroushchyk.Enum.Bmw.CarSizeWheelsMercedes;
 
 public class CarBmw extends Car {
 
     private int currentYear = 2021;
     private int minYearForCreateCar = currentYear - 10;
 
-    protected CarBmw(CarColorBmw color, CarModelBmw model, int yearProduction,
-                     CarSizeWheelsBmw sizeWheels, CarEngineVolumeBmw engineVolume) {
+    protected CarBmw(CarColorMercedes color, CarModelMercedes model, int yearProduction,
+                     CarSizeWheelsMercedes sizeWheels, CarEngineVolumeMercedes engineVolume) {
         super(color.getColor(), model.getModel(), yearProduction,
-                sizeWheels.getSizeWheels(), engineVolume.getVolume());
+                Integer.parseInt(sizeWheels.getSizeWheels()), Integer.parseInt(engineVolume.getVolume()));
     }
 }

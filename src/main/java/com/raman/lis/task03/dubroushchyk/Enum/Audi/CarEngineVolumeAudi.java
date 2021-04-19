@@ -3,23 +3,23 @@ package com.raman.lis.task03.dubroushchyk.Enum.Audi;
 import com.raman.lis.task03.dubroushchyk.ICarEngine;
 
 public enum CarEngineVolumeAudi implements ICarEngine {
-    LOW_VOLUME(1600),
-    MIDDLE_VOLUME(3000),
-    HIGH_VOLUME(4000);
+    LOW_1600("1600"),
+    MIDDLE_3000("3000"),
+    HIGH_4000("4000");
 
-    private int volume;
+    private String volume;
 
-    CarEngineVolumeAudi(int value) {
+    CarEngineVolumeAudi(String value) {
         this.volume = value;
     }
 
     @Override
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(volume);
-    }
+//    @Override
+//    public String toString() {
+//        return String.valueOf(volume);
+//    }
 }

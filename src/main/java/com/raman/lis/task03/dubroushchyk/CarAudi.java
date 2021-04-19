@@ -10,6 +10,6 @@ public class CarAudi extends Car {
     public CarAudi(CarColorAudi color, CarModelAudi model, int yearProduction,
                    CarSizeWheelsAudi sizeWheels, CarEngineVolumeAudi engineVolume) {
         super(color.getColor(), model.getModel(), yearProduction,
-                sizeWheels.getSizeWheels(), engineVolume.getVolume());
+                Integer.parseInt(sizeWheels.getSizeWheels()), Integer.parseInt(engineVolume.getVolume()));
     }
 }
