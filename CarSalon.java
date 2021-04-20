@@ -1,35 +1,41 @@
-package com.TaskCar;
+package com.Task.Task07;
+
+import com.Task.Task07.CarConstructor.Car;
+import com.Task.Task07.CarEnum.*;
+import com.Task.Task07.CarFabric.CarFabric;
+import com.Task.Task07.CarService.ServiceChangeColor;
+import com.Task.Task07.CarService.ServiceOptions;
+import com.Task.Task07.CarService.ServiceChangeWheel;
 
 public class CarSalon {
-      private CarFabric fabric;
-      private CarService service;
 
-      CarSalon(CarFabric fabric, CarService service) {
-              this.fabric = fabric;
-              this.service = service;
-      }
+    private int currentYear = 2021;
+    private int minYearForProduction = currentYear - 16;
 
-      Car createCarFabric(CarColor color, CarBrand brand, int year, CarSizeWheels sizeWheels, CarEngineVolume engineVolume) {
-              return fabric.createCar(color.getColor(), brand.getBrand(), year, sizeWheels.getSizeWheels(), engineVolume.getVolume());
-      }
+    Car createCarOnFabric(CarFabric carFabric, CarColor color, CarBody body, CarModel model, int year, CarSizeWheels sizeWheels, CarEngineVolume engineVolume) throws IllegalArgumentException {
+        if (year > currentYear || year < minYearForProduction) {
+            throw new IllegalArgumentException("Car make create from 2005 to 2021");
+        }
+        return carFabric.createCar(color, body, model, year, sizeWheels, engineVolume);
+    }
 
-      Car carFromFabricStorage(int number) {
-          return fabric.carFromStorage(number);
-      }
+    Car getCarFromCarFabricStorage(CarFabric carFabric, int number) {
+        return carFabric.getCarFromStorage(number);
+    }
 
-      void changeServiceColor(Car car, String color) {
-          service.changeColorCar(car, color);
-      }
+    void changeServiceWheels(ServiceChangeWheel serviceChangeWheel, Car car, int wheels) {
+        serviceChangeWheel.changeServiceWheels(car, wheels);
+    }
 
-      void  changeServiceWheels(Car car, int wheels) {
-          service.changeSizeWheelCar(car, wheels);
-      }
+    void changeColorCarInService(ServiceChangeColor serviceColor, Car car, String color) {
+        serviceColor.changeCarColorInCar(car, color);
+    }
 
-      void addServiceOption(Car car, String string) {
-          service.Option(car, string);
-      }
+    void addServiceOption(ServiceOptions serviceOptions, Car car, CarOption option) {
+        serviceOptions.addOptionCar(car, option);
+    }
 
-      void  deleteServiceOption(Car car, String string) {
-          service.DeleteOption(car, string);
-      }
+    void deleteServiceOption(ServiceOptions serviceOptions, Car car, CarOption option) {
+        serviceOptions.deleteOptionCar(car, option);
+    }
 }
