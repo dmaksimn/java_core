@@ -1,4 +1,4 @@
-package com.raman.lis.task02.bodrova;
+package com.raman.lis.task02.badrova;
 
 public class Main {
 

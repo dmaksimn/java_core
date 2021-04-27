@@ -1,4 +1,4 @@
-package com.raman.lis.task02.bodrova;
+package com.raman.lis.task02.badrova;
 
 import java.util.ArrayList;
 import java.util.List;
