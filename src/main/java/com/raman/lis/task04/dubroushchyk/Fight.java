@@ -1,4 +1,4 @@
-package com.raman.lis.Fight_robot;
+package com.raman.lis.task04.dubroushchyk;
 
 import java.util.ArrayList;
 import java.util.Random;
