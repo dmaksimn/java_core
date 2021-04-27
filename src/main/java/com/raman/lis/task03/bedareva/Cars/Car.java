@@ -1,9 +1,16 @@
-package com.raman.lis.task03.bedareva;
+package com.raman.lis.task03.bedareva.Cars;
+
+import com.raman.lis.task03.bedareva.Enum.Color;
+import com.raman.lis.task03.bedareva.Enum.EngineVolume;
+import com.raman.lis.task03.bedareva.Enum.Model;
+import com.raman.lis.task03.bedareva.Enum.Option;
+import com.raman.lis.task03.bedareva.Enum.WheelSize;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Car {
+
     protected Color color;
     protected final Model model;
     protected final int year;
@@ -22,28 +29,25 @@ public abstract class Car {
     public boolean changeColor(Color color) {
         if (color != null) {
             this.color = color;
-            System.out.println("Цвет изменен");
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    public void changeWheels(WheelSize newWheels) {
-        if (newWheels == null) {
-            throw new NullPointerException();
+    public boolean changeWheels(WheelSize newWheels) {
+        if (newWheels != null) {
+            this.wheelSize = newWheels;
+            return true;
         }
-        wheelSize = newWheels;
-        System.out.println("Колеса заменены");
+        return false;
     }
 
-    public boolean addOptionToList(Option option) {
+    public boolean addOption(Option option) {
         if (option != null) {
             if (optionList == null) {
                 optionList = new ArrayList<>();
             }
             optionList.add(option);
-            System.out.println("Опция добавлена");
             return true;
         } else {
             return false;
@@ -53,19 +57,10 @@ public abstract class Car {
     public boolean deleteOptionFromList(Option option) {
         if (option != null) {
             if (optionList != null && optionList.size() > 0) {
-                if (optionList.contains(option)) {
-                    optionList.remove(option);
-                    System.out.println("Опция удалена");
-                } else {
-                    System.out.println("Такой опции в машине нет, удалить ее невозможно");
-                }
-            } else {
-                System.out.println("Список опций пуст.");
+                return optionList.remove(option);
             }
-            return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public void infoAboutCar() {
@@ -88,20 +83,25 @@ public abstract class Car {
         System.out.println("Информация об авто: " + builder);
     }
 
-    public boolean compareCarAtWarehouse(Color color, Model model, int year,
-                                         WheelSize wheelSize, EngineVolume engineVolume) {
-        return this.year == year &&
-                this.wheelSize == wheelSize &&
-                this.engineVolume == engineVolume &&
-                this.color == color &&
-                this.model == model;
+    public Color getColor() {
+        return color;
     }
 
-    public boolean searchCarForChanges(Model model, int year, EngineVolume engineVolume) {
-        return this.year == year &&
-                this.engineVolume == engineVolume &&
-                this.model == model;
+    public WheelSize getWheelSize() {
+        return wheelSize;
     }
+
+    public EngineVolume getEngineVolume() {
+        return engineVolume;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
 }
-
 

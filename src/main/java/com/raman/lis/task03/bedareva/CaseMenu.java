@@ -1,5 +1,21 @@
 package com.raman.lis.task03.bedareva;
 
+import com.raman.lis.task03.bedareva.Cars.Car;
+import com.raman.lis.task03.bedareva.Enum.Color;
+import com.raman.lis.task03.bedareva.Enum.EngineVolume;
+import com.raman.lis.task03.bedareva.Enum.Model;
+import com.raman.lis.task03.bedareva.Enum.Option;
+import com.raman.lis.task03.bedareva.Enum.WheelSize;
+import com.raman.lis.task03.bedareva.Factories.Factory;
+import com.raman.lis.task03.bedareva.Factories.FactoryBMW;
+import com.raman.lis.task03.bedareva.Factories.FactoryKia;
+import com.raman.lis.task03.bedareva.Factories.FactoryMazda;
+import com.raman.lis.task03.bedareva.Factories.FactoryPorsche;
+import com.raman.lis.task03.bedareva.Factories.FactoryVolkswagen;
+import com.raman.lis.task03.bedareva.Services.ChangeColorService;
+import com.raman.lis.task03.bedareva.Services.ChangeOption;
+import com.raman.lis.task03.bedareva.Services.ChangeWheelsService;
+
 import java.util.Scanner;
 
 public class CaseMenu {
@@ -48,9 +64,10 @@ public class CaseMenu {
                         if (customerCar1 != null) {
                             System.out.println("Выбор замены: ");
                             Color newColor = choiceColor();
-                            if (customerCar1.color != newColor) {
+                            if (customerCar1.getColor() != newColor) {
                                 // не знаю насколько это необходимо, но решила не менять цвет авто на такой же
                                 salon.changeColorInCar(changeColorService, customerCar1, newColor);
+                                System.out.println("Цвет изменен");
                             } else {
                                 System.out.println("Услуга не выполнена, вы выбрали уже имеющийся цвет," +
                                         " не вижу смысла делать бесполезную работу))");
@@ -66,9 +83,10 @@ public class CaseMenu {
                         if (customerCar2 != null) {
                             System.out.println("Выбор замены: ");
                             WheelSize newWheelSize = choiceWheelSize();
-                            if (customerCar2.wheelSize != newWheelSize) {
+                            if (customerCar2.getWheelSize() != newWheelSize) {
                                 // см. case 2
                                 salon.changeWheelsInCar(changeWheelsService, customerCar2, newWheelSize);
+                                System.out.println("Колеса заменены");
                             } else {
                                 System.out.println("Услуга не выполнена, вы выбрали уже имеющийся колеса," +
                                         " не вижу смысла делать бесполезную работу))");
@@ -79,10 +97,10 @@ public class CaseMenu {
                         printMenu();
                         break;
                     case 4:
-                        System.out.println(" Вы выбрали : добавлениe опций в авто со склада");
+                        System.out.println(" Вы выбрали : добавление опций в авто со склада");
                         Car customerCar3 = choiceCarAtWarehouse();
                         if (customerCar3 != null) {
-                            if (salon.addOptionInCar(changeOption, customerCar3, choiceNewOption())) {
+                            if (salon.addOptionInCar(changeOption, customerCar3, choiceNewOption()) != null) {
                                 customerCar3.infoAboutCar();
                             }
                         } else {
@@ -95,10 +113,10 @@ public class CaseMenu {
                         Car customerCar4 = choiceCarAtWarehouse();
                         if (customerCar4 != null) {
                             Option option = choiceNewOption();
-                            if (salon.deleteOptionInCar(changeOption, customerCar4, option)) {
+                            if (salon.deleteOptionInCar(changeOption, customerCar4, option) != null) {
                                 customerCar4.infoAboutCar();
                             } else {
-                                System.out.println(" Услуга не выполнена, начните сначала");
+                                System.out.println(" Услуга не выполнена, такой опции в машине нет, начните сначала");
                             }
                         } else {
                             System.out.println(" Услуга не выполнена, начните сначала");
@@ -124,39 +142,38 @@ public class CaseMenu {
         return scanner.nextInt();
     }
 
-    public Car choiceModel() {
+    public void choiceModel() {
         System.out.println("Выберите марку авто");
         int key;
-        System.out.println("1. Для изготовления нового автомобиля " + Model.BMW + " введите 1");
-        System.out.println("2. Для изготовления нового автомобиля " + Model.KIA + " введите 2");
-        System.out.println("3. Для изготовления нового автомобиля " + Model.MAZDA + " введите 3");
-        System.out.println("4. Для изготовления нового автомобиля " + Model.PORSCHE + " введите 4");
-        System.out.println("5. Для изготовления нового автомобиля " + Model.VOLKSWAGEN + " введите 5");
-        System.out.println("6. Вернуться в меню");
-
+        printModelMenu();
         do {
             key = getInt();
             switch (key) {
                 case 1:
                     System.out.println("Вы выбрали 1: Изготовление нового авто BMW.");
-                    return salon.createNewCarOnFactory(factoryBMW, choiceColor(), Model.BMW, 2021,
+                    salon.createNewCarOnFactory(factoryBMW, choiceColor(), Model.BMW, 2021,
                             choiceWheelSize(), choiceEngineVolume());
+                    return;
                 case 2:
                     System.out.println("Вы выбрали 2: Изготовление нового авто Kia.");
-                    return salon.createNewCarOnFactory(factoryKia, choiceColor(), Model.KIA, 2021,
+                    salon.createNewCarOnFactory(factoryKia, choiceColor(), Model.KIA, 2021,
                             choiceWheelSize(), choiceEngineVolume());
+                    return;
                 case 3:
                     System.out.println("Вы выбрали 3: Изготовление нового авто Mazda.");
-                    return salon.createNewCarOnFactory(factoryMazda, choiceColor(), Model.MAZDA, 2021,
+                    salon.createNewCarOnFactory(factoryMazda, choiceColor(), Model.MAZDA, 2021,
                             choiceWheelSize(), choiceEngineVolume());
+                    return;
                 case 4:
                     System.out.println("Вы выбрали 4: Изготовление нового авто Porsche.");
-                    return salon.createNewCarOnFactory(factoryPorsche, choiceColor(), Model.PORSCHE, 2021,
+                    salon.createNewCarOnFactory(factoryPorsche, choiceColor(), Model.PORSCHE, 2021,
                             choiceWheelSize(), choiceEngineVolume());
+                    return;
                 case 5:
                     System.out.println("Вы выбрали 5: Изготовление нового авто Volkswagen.");
-                    return salon.createNewCarOnFactory(factoryVolkswagen, choiceColor(), Model.VOLKSWAGEN, 2021,
+                    salon.createNewCarOnFactory(factoryVolkswagen, choiceColor(), Model.VOLKSWAGEN, 2021,
                             choiceWheelSize(), choiceEngineVolume());
+                    return;
                 case 6:
                     System.out.println("Вы выбрали 6: Вернуться в меню.");
                     start();
@@ -165,9 +182,16 @@ public class CaseMenu {
                     System.out.println("Вы ввели неверное значение меню...\n");
             }
         } while (key != 6);
-        return null;
     }
 
+    private void printModelMenu() {
+        System.out.println("1. "  + Model.BMW + " введите 1");
+        System.out.println("2. "  + Model.KIA + " введите 2");
+        System.out.println("3. " + Model.MAZDA + " введите 3");
+        System.out.println("4. " + Model.PORSCHE + " введите 4");
+        System.out.println("5. " + Model.VOLKSWAGEN + " введите 5");
+        System.out.println("6. Вернуться в меню");
+    }
     private void printColorMenu() {
         System.out.println("1. Для изготовления нового автомобиля " + Color.GREEN + " введите 1");
         System.out.println("2. Для изготовления нового автомобиля " + Color.RED + " введите 2");
@@ -286,34 +310,24 @@ public class CaseMenu {
         return null;
     }
 
-    public void printFactories() {
-        System.out.println("1. Завод " + Model.BMW + " введите 1");
-        System.out.println("2. Завод " + Model.KIA + " введите 2");
-        System.out.println("3. Завод " + Model.MAZDA + " введите 3");
-        System.out.println("4. Завод " + Model.PORSCHE + " введите 4");
-        System.out.println("5. Завод " + Model.VOLKSWAGEN + " введите 5");
-        System.out.println("6. Вернуться в меню");
-    }
-
     public Car choiceCarAtWarehouse() {
         System.out.println("На скдладе какого завода находится авто для изменений? " +
                 "(Следующие вопросы будут о машине, которая находится на складе)");
         int key;
-        printFactories();
+        printModelMenu();
         do {
             key = getInt();
             switch (key) {
                 case 1:
-                    if (factoryBMW.warehouse.size() > 0) {
+                    if (factoryBMW.getWarehouse().size() > 0) {
                         System.out.println("Вы выбрали авто на складе завода БМВ");
-                        return factoryBMW.searchCarAtWarehouse(choiceColor(),
-                                Model.BMW, choiceYear(),
+                        return factoryBMW.searchCarAtWarehouse(choiceColor(), Model.BMW, choiceYear(),
                                 choiceWheelSize(), choiceEngineVolume());
                     }
                     System.out.println("Склад завода BMW пуст");
                     return null;
                 case 2:
-                    if (factoryKia.warehouse.size() > 0) {
+                    if (factoryKia.getWarehouse().size() > 0) {
                         System.out.println("Вы выбрали авто на складе завода Kia");
                         return factoryKia.searchCarAtWarehouse(choiceColor(), Model.KIA, choiceYear(),
                                 choiceWheelSize(), choiceEngineVolume());
@@ -321,7 +335,7 @@ public class CaseMenu {
                     System.out.println("Склад завода Kia пуст");
                     return null;
                 case 3:
-                    if (factoryMazda.warehouse.size() > 0) {
+                    if (factoryMazda.getWarehouse().size() > 0) {
                         System.out.println("Вы выбрали авто на складе завода Mazda");
                         return factoryMazda.searchCarAtWarehouse(choiceColor(), Model.MAZDA, choiceYear(),
                                 choiceWheelSize(), choiceEngineVolume());
@@ -329,7 +343,7 @@ public class CaseMenu {
                     System.out.println("Склад завода Mazda пуст");
                     return null;
                 case 4:
-                    if (factoryPorsche.warehouse.size() > 0) {
+                    if (factoryPorsche.getWarehouse().size() > 0) {
                         System.out.println("Вы выбрали авто на складе завода Porsche");
                         return factoryPorsche.searchCarAtWarehouse(choiceColor(), Model.PORSCHE, choiceYear(),
                                 choiceWheelSize(), choiceEngineVolume());
@@ -337,7 +351,7 @@ public class CaseMenu {
                     System.out.println("Склад завода Porsche пуст");
                     return null;
                 case 5:
-                    if (factoryVolkswagen.warehouse.size() > 0) {
+                    if (factoryVolkswagen.getWarehouse().size() > 0) {
                         System.out.println("Вы выбрали авто на складе завода Volkswagen");
                         return factoryVolkswagen.searchCarAtWarehouse(choiceColor(), Model.VOLKSWAGEN, choiceYear(),
                                 choiceWheelSize(), choiceEngineVolume());
@@ -407,8 +421,7 @@ public class CaseMenu {
                     System.out.println("Вы выбрали 2: автоблокировка дверей");
                     return Option.AUTO_LOCK_DOOR;
                 case 3:
-                    System.out.println(
-                            "Вы выбрали 3: датчики давления в шинах");
+                    System.out.println("Вы выбрали 3: датчики давления в шинах");
                     return Option.TIRE_PRESSURE_SENSORS;
                 case 4:
                     System.out.println("Вы выбрали 4: Вернуться в меню.");
@@ -421,6 +434,3 @@ public class CaseMenu {
         return null;
     }
 }
-
-
-

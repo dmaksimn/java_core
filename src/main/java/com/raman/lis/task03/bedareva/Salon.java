@@ -1,5 +1,16 @@
 package com.raman.lis.task03.bedareva;
 
+import com.raman.lis.task03.bedareva.Cars.Car;
+import com.raman.lis.task03.bedareva.Enum.Color;
+import com.raman.lis.task03.bedareva.Enum.EngineVolume;
+import com.raman.lis.task03.bedareva.Enum.Model;
+import com.raman.lis.task03.bedareva.Enum.Option;
+import com.raman.lis.task03.bedareva.Enum.WheelSize;
+import com.raman.lis.task03.bedareva.Factories.Factory;
+import com.raman.lis.task03.bedareva.Services.ChangeColorService;
+import com.raman.lis.task03.bedareva.Services.ChangeOption;
+import com.raman.lis.task03.bedareva.Services.ChangeWheelsService;
+
 public class Salon {
 
     Car createNewCarOnFactory(Factory factory, Color color, Model model, int year,
@@ -13,40 +24,32 @@ public class Salon {
         throw new IllegalArgumentException();
     }
 
-
-    boolean changeColorInCar(ChangeColorService changeColorService, Car car, Color color) {
+    Car changeColorInCar(ChangeColorService changeColorService, Car car, Color color) {
         if (changeColorService != null && car != null && color != null) {
-            changeColorService.changeColor(car, color);
-            return true;
-        } else {
-            return false;
+            return changeColorService.changeColor(car, color);
         }
+        return null;
     }
 
-    boolean changeWheelsInCar(ChangeWheelsService changeWheelsService, Car car, WheelSize wheelSize) {
+    Car changeWheelsInCar(ChangeWheelsService changeWheelsService, Car car, WheelSize wheelSize) {
         if (changeWheelsService != null && car != null && wheelSize != null) {
-            changeWheelsService.changeWheels(car, wheelSize);
-            return true;
-        } else {
-            return false;
+            return changeWheelsService.changeWheels(car, wheelSize);
         }
+        return null;
     }
 
-    boolean addOptionInCar(ChangeOption changeOption, Car car, Option option) {
+    Car addOptionInCar(ChangeOption changeOption, Car car, Option option) {
         if (changeOption != null && car != null && option != null) {
-            changeOption.addOptionToList(car, option);
-            return true;
-        } else {
-            return false;
+            return changeOption.addOptionToList(car, option);
         }
+        return null;
     }
 
-    boolean deleteOptionInCar(ChangeOption changeOption, Car car, Option option) {
+    Car deleteOptionInCar(ChangeOption changeOption, Car car, Option option) {
         if (changeOption != null && car != null && option != null) {
-            changeOption.deleteOptionFromList(car, option);
-            return true;
-        } else {
-            return false;
+            return changeOption.deleteOptionFromList(car, option);
         }
+        return null;
     }
 }
+
