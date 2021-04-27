@@ -1,4 +1,4 @@
-package com.raman.lis.task03.bedareva;
+package com.raman.lis.task03.bedareva.Enum;
 
 public enum Option {
 
@@ -6,7 +6,7 @@ public enum Option {
     AUTO_LOCK_DOOR("автоблокировка дверей"),
     TIRE_PRESSURE_SENSORS("датчики давления в шинах");
 
-    private String option;
+    private final String option;
 
     Option(String option) {
         this.option = option;

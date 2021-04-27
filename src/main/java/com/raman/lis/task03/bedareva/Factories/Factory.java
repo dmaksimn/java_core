@@ -1,12 +1,22 @@
-package com.raman.lis.task03.bedareva;
+package com.raman.lis.task03.bedareva.Factories;
+
+import com.raman.lis.task03.bedareva.Cars.Car;
+import com.raman.lis.task03.bedareva.Enum.Color;
+import com.raman.lis.task03.bedareva.Enum.EngineVolume;
+import com.raman.lis.task03.bedareva.Enum.Model;
+import com.raman.lis.task03.bedareva.Enum.WheelSize;
+import com.raman.lis.task03.bedareva.Services.ChangeColorService;
+import com.raman.lis.task03.bedareva.Services.ChangeOption;
+import com.raman.lis.task03.bedareva.Services.ChangeWheelsService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public abstract class Factory implements Printable {
 
-    protected final List<Car> warehouse = new ArrayList<>();
+    protected List<Car> warehouse = new ArrayList<>();
 
     public Factory(ChangeWheelsService changeWheelsService, ChangeColorService changeColorService,
                    ChangeOption changeOption) {
@@ -27,7 +37,7 @@ public abstract class Factory implements Printable {
                                     WheelSize wheelSize, EngineVolume engineVolume) {
         for (int i = 0; i < warehouse.size(); i++) {
             Car checkedCar = warehouse.get(i);
-            if (checkedCar.compareCarAtWarehouse(color, model, year, wheelSize, engineVolume)) {
+            if (compareCarAtWarehouse(checkedCar, color, model, year, wheelSize, engineVolume)) {
                 warehouse.remove(i);
                 System.out.println("Данное авто есть на складе");
                 return checkedCar;
@@ -42,7 +52,7 @@ public abstract class Factory implements Printable {
         if (color != null && wheelSize != null) {
             for (int i = 0; i < warehouse.size(); i++) {
                 Car checkedCar = warehouse.get(i);
-                if (checkedCar.searchCarForChanges(model, year, engineVolume)) {
+                if (searchCarForChanges(checkedCar, model, year, engineVolume)) {
                     checkedCar.changeColor(color);
                     checkedCar.changeWheels(wheelSize);
                     warehouse.remove(i);
@@ -57,5 +67,24 @@ public abstract class Factory implements Printable {
 
     public abstract Car createNewCar(Color color, Model model, int year,
                                      WheelSize wheelSize, EngineVolume engineVolume);
+
+    public boolean compareCarAtWarehouse(Car car, Color color, Model model, int year,
+                                         WheelSize wheelSize, EngineVolume engineVolume) {
+        return car.getYear() == year &&
+                car.getWheelSize() == wheelSize &&
+                car.getEngineVolume() == engineVolume &&
+                car.getColor() == color &&
+                car.getModel() == model;
+    }
+
+    public boolean searchCarForChanges(Car car, Model model, int year, EngineVolume engineVolume) {
+        return car.getYear() == year &&
+                car.getEngineVolume() == engineVolume &&
+                car.getModel() == model;
+    }
+
+    public List<Car> getWarehouse() {
+        return warehouse;
+    }
 }
 

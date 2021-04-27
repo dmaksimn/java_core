@@ -1,4 +1,4 @@
-package com.raman.lis.task03.bedareva;
+package com.raman.lis.task03.bedareva.Enum;
 
 public enum Color {
     BLUE,
@@ -6,5 +6,5 @@ public enum Color {
     GREEN,
     YELLOW,
     RED,
-    WHITE;
+    WHITE
 }
