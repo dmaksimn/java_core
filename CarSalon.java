@@ -1,8 +1,8 @@
 package com.Task.Task07;
 
-import com.Task.Task07.CarConstructor.Car;
-import com.Task.Task07.CarProperties.*;
-import com.Task.Task07.CarFabric.CarFabric;
+import com.Task.Task07.carConstructor.Car;
+import com.Task.Task07.carProperties.*;
+import com.Task.Task07.carFabric.CarFabric;
 import com.Task.Task07.CarService.ServiceChangeColor;
 import com.Task.Task07.CarService.ServiceOptions;
 import com.Task.Task07.CarService.ServiceChangeWheel;

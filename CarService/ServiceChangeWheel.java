@@ -1,7 +1,7 @@
 package com.Task.Task07.CarService;
 
-import com.Task.Task07.CarConstructor.Car;
-import com.Task.Task07.CarInterface.CarServiceWheelInterface;
+import com.Task.Task07.carConstructor.Car;
+import com.Task.Task07.carInterface.CarServiceWheelInterface;
 
 public class ServiceChangeWheel implements CarServiceWheelInterface {
 
