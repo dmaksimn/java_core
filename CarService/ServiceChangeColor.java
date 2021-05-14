@@ -1,7 +1,7 @@
 package com.Task.Task07.CarService;
 
-import com.Task.Task07.carConstructor.Car;
-import com.Task.Task07.carInterface.ServiceColorInterface;
+import com.Task.Task07.CarConstructor.Car;
+import com.Task.Task07.CarInterface.ServiceColorInterface;
 
 public class ServiceChangeColor implements ServiceColorInterface {
 
