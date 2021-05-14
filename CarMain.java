@@ -1,15 +1,15 @@
 package com.Task.Task07;
 
-import com.Task.Task07.CarConstructor.Car;
-import com.Task.Task07.CarProperties.*;
-import com.Task.Task07.CarFabric.CarFabric;
-import com.Task.Task07.CarFabric.FabricAudi;
-import com.Task.Task07.CarFabric.FabricMitsubishi;
-import com.Task.Task07.CarFabric.FabricOpel;
+import com.Task.Task07.carConstructor.Car;
+import com.Task.Task07.carProperties.*;
+import com.Task.Task07.carFabric.CarFabric;
+import com.Task.Task07.carFabric.FabricAudi;
+import com.Task.Task07.carFabric.FabricMitsubishi;
+import com.Task.Task07.carFabric.FabricOpel;
 import com.Task.Task07.CarService.ServiceChangeColor;
 import com.Task.Task07.CarService.ServiceOptions;
 import com.Task.Task07.CarService.ServiceChangeWheel;
-import com.Task.Task07.WorkConsole.WorkConsole;
+import com.Task.Task07.workConsole.WorkConsole;
 
 import java.util.Scanner;
 
