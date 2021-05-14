@@ -13,6 +13,7 @@ public class JudgmentDay {
         RIGHTHAND,
         LEFTLEG,
         RIGHTLEG,
+        BODY,
         HEAD,
         ;
 
@@ -102,6 +103,6 @@ public class JudgmentDay {
         USA.join();
         USSR.join();
         System.out.println("Winner: "
-                + (countRobotUSA >= 5 ? "USA" : "USSR"));
+                + (countRobotUSA >= 5 ? "USA " : "USSR ") + (countRobotUSSR >= 5 ? "USSR " : "USA "));
     }
 }
